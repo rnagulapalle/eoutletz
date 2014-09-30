@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:sws="http://www.springframework.org/schema/web-services"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/web-services http://www.springframework.org/schema/web-services/web-services-2.0.xsd
+	    http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+	<task:annotation-driven />
+<!-- 
+	<bean id="messageFactory" class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory" />
+	
+	<bean id="memberServiceMarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+        <property name="contextPath" value="com.ehi.bfadapter.domain" />
+    </bean>
+    
+	<bean id="webServiceTemplate" class="org.springframework.ws.client.core.WebServiceTemplate">
+		<constructor-arg ref="messageFactory" />
+        <property name="marshaller" ref="memberServiceMarshaller"></property>
+        <property name="unmarshaller" ref="memberServiceMarshaller"></property>
+		<property name="defaultUri"
+			value="${ehi.bfa.base.partner.endpoint}" />
+		<property name="interceptors">
+	        <list>
+	            <ref bean="Wss4jSecurityInterceptor" />
+	            <ref bean="payloadValidatingInterceptor" />
+	        </list>
+		</property>
+	</bean>
+
+    <bean id="payloadValidatingInterceptor" 
+    	class="com.ehi.bfadapter.interceptor.BFPayloadValidatingInterceptor">
+        <property name="schemas">
+        	<list>
+        		<value>classpath*:/schema/bf/memberservice/*.xsd</value>
+        	</list>
+        </property>
+        <property name="validateRequest" value="false"/>
+        <property name="validateResponse" value="true"/>
+    </bean>
+    	
+	<bean id="Wss4jSecurityInterceptor" class="com.ehi.bfadapter.interceptor.BFWss4jSecurityInterceptor">
+		<property name="securementActions" value="Signature" />
+		<property name="securementSignatureKeyIdentifier" value="DirectReference" />
+		<property name="securementUsername" value="${ehi.bfa.base.securement.username}" />
+		<property name="securementPassword" value="${ehi.bfa.base.securement.password}" />
+		<property name="securementSignatureCrypto">
+			<bean class="com.ehi.bfadapter.service.factory.BFCryptoFactoryBean">
+				<property name="keyStorePassword" value="${ehi.bfa.base.keystore.password}" />
+				<property name="keyStoreLocation" value="${ehi.bfa.base.keystore.location}" />
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate"/>
+	
+	<bean id="javaMailSenderImpl" class="org.springframework.mail.javamail.JavaMailSenderImpl" />
+	 -->
+</beans>

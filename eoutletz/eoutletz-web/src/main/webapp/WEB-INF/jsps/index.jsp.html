@@ -1,0 +1,81 @@
+<html>
+<body>
+<h4>Post SAML Test Page!</h4>
+<!-- protect this page from all other environment except DEV unless required as this page contains all test accounts -->
+<form method="post" action="saml/post/">
+    <input type="hidden" name="SAMLResponse" value="${saml}" />
+    <input type="submit" value="TestSAMLIntegration" />
+</form>	
+<%-- <form method="post" action="saml/post/">
+    <input type="hidden" name="SAMLResponse" value="${SAMLWithNoAttributeStatement}" />
+    <input type="submit" value="SAMLWithNoAttributeStatement" />
+</form>	
+<form method="post" action="saml/post/">
+    <input type="hidden" name="SAMLResponse" value="${SAMLWithNoAttributes}" />
+    <input type="submit" value="SAMLWithNoAttributes" />
+</form>	--%>
+<form method="post" action="saml/post/">
+    <input type="hidden" name="SAMLResponse" value="${newSAML}" />
+    <input type="submit" value="new SAMLTest" />
+</form>	
+<form method="post" action="saml/post/">
+    <input type="hidden" name="SAMLResponse" value="${testUser1}" />
+    <input type="submit" value="Test User1 SAML" />
+</form>	 
+<form method="post" action="saml/post/">
+    <input type="hidden" name="SAMLResponse" value="${testUser2}" />
+    <input type="submit" value="Test User2 SAML" />
+</form>	
+<form method="post" action="saml/post/">
+    <input type="hidden" name="SAMLResponse" value="${testUser3}" />
+    <input type="submit" value="Test User3 SAML" />
+</form>	 
+<form method="post" action="saml/post/">
+    <input type="hidden" name="SAMLResponse" value="${testUser4}" />
+    <input type="submit" value="Test User4 SAML" />
+</form>	
+<form method="post" action="saml/post/">
+    <input type="hidden" name="SAMLResponse" value="${user50}" />
+    <input type="submit" value="user50" />
+</form>	
+<form method="post" action="saml/post/">
+    <input type="hidden" name="SAMLResponse" value="${user51}" />
+    <input type="submit" value="user51" />
+</form>	 
+<form method="post" action="saml/post/">
+    <input type="hidden" name="SAMLResponse" value="${user55}" />
+    <input type="submit" value="user55" />
+</form>	 
+<form method="post" action="saml/post/">
+    <input type="hidden" name="SAMLResponse" value="${user58}" />
+    <input type="submit" value="user58" />
+</form>	 
+<form method="post" action="saml/post/">
+    <input type="hidden" name="SAMLResponse" value="${user70}" />
+    <input type="submit" value="user70" />
+</form>	 
+<form method="post" action="saml/post/">
+    <input type="hidden" name="SAMLResponse" value="${user201}" />
+    <input type="submit" value="user201" />
+</form>
+<form method="post" action="saml/post/">
+    <input type="hidden" name="SAMLResponse" value="${userWithoutBenefits}" />
+    <input type="submit" value="Test user for without benefits" />
+</form>
+<form method="post" action="saml/post/">
+    <input type="hidden" name="SAMLResponse" value="${user1000}" />
+    <input type="submit" value="user1000" />
+</form><form method="post" action="user/post/">
+    <input type="hidden" name="category" value="INELIGIBLE" />
+    <input type="submit" value="IFP User" />
+</form>
+<form method="post" action="saml/post/">
+    <input type="hidden" name="SAMLResponse" value="${user2000}" />
+    <input type="submit" value="user2000" />
+</form>
+<form method="post" action="user/post/">
+    <input type="hidden" name="category" value="ELIGIBLE" />
+    <input type="submit" value="Medicare User" />
+</form>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<context:component-scan base-package="com.ehi.saml" />
+	<context:component-scan base-package="com.ehi.bfadapter.common.rest" />
+	<context:component-scan base-package="com.ehi.bfadapter.common.domain" />
+	<context:component-scan base-package="com.ehi.bfadapter.common.utils" />
+	<context:component-scan base-package="com.ehi.bfadapter.service" />
+	<context:component-scan base-package="com.ehi.bfadapter.persist" />
+	<context:component-scan base-package="com.ehi.bfadapter.core" />
+	
+	<!--  needed following beans for unit test cases -->
+	<bean id="samlResponse" class="com.ehi.bfadapter.core.saml.response.SAMLResponse" />
+
+	<bean id="samlWrapper" class="com.ehi.bfadapter.core.wrapper.SAMLWrapper" />
+
+	<bean id="samlValidationFilter" class="com.ehi.bfadapter.core.saml.filter.SAMLValidationFilter" />
+	
+	<bean id="bfaErrorConstants" class="com.ehi.bfadapter.common.utils.BenefitFocusErrorConstants" >
+		<property name="benefitFocusURL" value="${ehi.bfa.base.partner.url}"/>
+	</bean>
+	
+</beans>

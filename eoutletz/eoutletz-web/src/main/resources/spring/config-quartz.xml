@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<context:property-placeholder location="classpath:quartz.properties" ignore-unresolvable="true"/>
+	
+	<!-- partner alliance job -->
+	<bean id="partnerAllianceFetchJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="com.ehi.bfadapter.core.job.PartnerAllianceFetchJob" />
+		<property name="group" value="BFA_JOBS_GROUP" />
+		<property name="durability" value="true" />
+		<property name="description" value="this job gets partner details from CC"></property>
+	</bean>
+	<bean id="partnerAllianceFetchTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="partnerAllianceFetchJob"></property>
+		<property name="cronExpression" value="${ehi.bfa.job.fetchAlliance.cronExpression}"></property>
+		<property name="timeZone" ref="timeZone"></property>
+	</bean>
+
+	<!-- access token job -->
+	<bean id="accessTokenGenerateJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="com.ehi.bfadapter.core.job.AccessTokenGenerateJob" />
+		<property name="group" value="BFA_JOBS_GROUP" />
+		<property name="durability" value="true" />
+		<property name="description" value="this job gets bearer token for APIGEE API access"></property>
+	</bean>
+	<bean id="accessTokenGenerateTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="accessTokenGenerateJob"></property>
+		<property name="cronExpression" value="${ehi.bfa.job.generateToken.cronExpression}"></property>
+		<property name="timeZone" ref="timeZone"></property>
+	</bean>
+	
+	<bean id="bfaScheduler"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean" depends-on="org.springframework.jdbc.datasource.init.DataSourceInitializer#0">
+		<property name="quartzProperties">
+			<props>
+				<prop key="org.quartz.scheduler.instanceName">BFAClusteredScheduler</prop>
+				<prop key="org.quartz.scheduler.instanceId">AUTO</prop>
+				<prop key="org.quartz.scheduler.jmx.export">true</prop>
+				<prop key="org.quartz.threadPool.threadCount">15</prop>
+				<prop key="org.quartz.jobStore.tablePrefix">QRTZ_</prop>
+				<prop key="org.quartz.jobStore.isClustered">true</prop>
+				<prop key="org.quartz.jobStore.clusterCheckinInterval">20000</prop>
+				<prop key="org.quartz.jobStore.useProperties">true</prop>
+				<prop key="org.quartz.jobStore.misfireThreshold">300000</prop>
+			</props>
+		</property>
+		<property name="dataSource" ref="dataSource" />
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="nonTransactionalDataSource" ref="dataSource" />
+		<property name="overwriteExistingJobs" value="true" />
+		<property name="autoStartup" value="true" />
+		
+		<property name="schedulerContextAsMap">      
+            <map>      
+                <entry key="quartzJobService" value-ref="quartzJobService"/>  
+            </map>      
+        </property>
+
+		<property name="triggers">
+			<list>
+				<ref bean="partnerAllianceFetchTrigger" />
+				<ref bean="accessTokenGenerateTrigger" />
+			</list>
+		</property>
+
+		<property name="jobDetails">
+			<list>
+				<ref bean="partnerAllianceFetchJob" />
+				<ref bean="accessTokenGenerateJob" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="timeZone" class="java.util.TimeZone" factory-method="getTimeZone">
+		<constructor-arg value="America/Los_Angeles" />
+	</bean>
+	
+</beans>

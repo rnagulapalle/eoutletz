@@ -1,0 +1,75 @@
+<style>
+/* UPDATE */
+.sign-in .sign-in-wrap .left-wrap {
+    padding: 10px 20px 0 0;
+    width: 310px;
+}
+.sign-in-wrap .sign-in-r {
+    font-size: 1em;
+    width: 136px;
+}
+.sign-in-wrap hr {
+    margin-top: 35px;
+}
+/* ADD */
+#LoginForm ul#user-info ul {
+	margin-bottom:10px;
+}
+#LoginForm ul#user-info ul li:nth-child(1), #user-info ul li:nth-child(3) {
+    display: inline;
+    font-weight: bold;
+    margin-right: 10px;
+}
+#LoginForm ul#user-info ul li:nth-child(2), #user-info ul li:nth-child(4) {
+    display: inline;
+    
+}
+#LoginForm .row p {
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+#LoginForm ul#user-info{
+	margin-top: 10px;
+}
+</style>
+                <!-- left start -->
+                <div class="left-wrap">
+                    <h2>Activate your account</h2>
+                    <form action="do/login" method="post" id="LoginForm">
+						<!--<p class="create-account">New to eHealth? <a>Create an account</a></p>-->
+                        <div class="row">
+                        	<ul id="user-info">
+                        		<ul>
+                        			<li>email address</li>
+                        			<li>janice.mcrea@jetsolutions.com</li>
+                        		</ul>
+                        		<ul>
+                        			<li>name</li>
+                        			<li>Janice McRea</li>
+                        		</ul>
+                        	</ul>
+                            <!--<label for="email" id="emailText" class="validate">Email address</label>
+                            <input type="text" id="email" value="" maxlength="80" size="33" name="userName" class="validate" />-->
+                        </div>
+                        <div class="row">
+                            <label for="password" id="passwordText" class="validate">Chose a password</label>
+                            <input type="password" autocomplete="off" id="password" maxlength="20" size="20" name="password" class="validate" /> 
+                            <p>We'll email you a link to activate your account after you've set your password.</p>
+                        </div>
+                       <!-- <label class="checkbox" for="rememberMeCheckbox">
+                        	<input type="checkbox" class="field" id="rememberMeCheckbox" /> Remember me on this computer 
+						</label>-->
+                		<hr />
+                        <div class="buttons-area">
+                           <!--<a class="forgot-password">Forgot email or password?</a>-->
+                           <a class="sign-in-r">Activate Account</a>
+                        </div>
+					</form>
+                </div>
+                <!-- left end -->
+                <!-- right start -->
+                <div class="right-wrap"> 
+                	<img class="norton-img" src="../../resources/assets/images/norton.png" width="131" height="113"> 
+                	<img width="132" height="47" class="truste-img" src="../../resources/assets/images/truste.png"> 
+                </div>
+                <!-- right end -->

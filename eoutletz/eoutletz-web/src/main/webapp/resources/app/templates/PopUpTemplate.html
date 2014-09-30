@@ -1,0 +1,69 @@
+ <!--  popup start -->
+    <div id="pop-up-main" class="facebox no-border" style="top:200px; left:400px; display:none;">       
+        <div class="popup"> 
+            <a href="#" class="close-btn">Close</a>
+			<!-- popup one content start -->                  
+            <div id="ask-email-pop-up" class="bd ask-email-pop-up" style="height:264px; display:none;">               	
+				<h2 class="title">Forget password or email</h2>
+				<div class="main-wrap">             
+					<p>enter your email address below, we will send you an email instructure to reset your password</p>
+					<div class="email-address clear">
+						<label for="email-address" id="email-address-label">Email address</label>
+						<input type="text" id="email-address" />
+					</div>
+					<span class="error"></span>
+					<p class="forget-text">If you forget your email address, <a href="#">chat with a customer representitive</a></p>
+				</div>
+				<div class="btn-wrap">
+					<a class="cancel">Cancel</a>
+					<a class="button blue small-btn submit">Submit</a>
+				</div>
+            </div> 
+			<!-- popup one content end --> 
+			  
+			<!-- popup two content start -->                  
+            <div id="email-sent-pop-up" class="bd email-sent-pop-up" style="height:264px; display:none;">               	
+				<h2 class="title">Confirmation</h2>
+				<div class="main-wrap confirmation">             
+					<p>We've sent an email with password reset instruction to <span class="email"></span>.</p>
+					<p>If you don't see the email yet, please wait a few minutes, then check your inbox again.</p>
+					<p>Or, chek your bulk or junk mail folder. (If you find our email there, please add "ehealthinsurance" to your safe senders list.)</p>
+				</div>
+				<div class="btn-wrap">
+					<a href="#" class="button blue small-btn close-button">Close</a>
+				</div>
+            </div> 
+			<!-- popup two content end --> 
+			<!-- popup three content start -->                  
+            <div id="email-pop-up-error" class="bd email-pop-up-error" style="height:360px; display:none;">               	
+				<h2 class="title">Forget your password or email</h2>
+				<div class="error-wrap important-message">Important Message:<br />Your email address does not exist in our system. Please try again.</div>
+				<div class="main-wrap confirmation">             
+					<p>If your've forgotten your password, please enter your email address below, and we'll send you instructions for resetting your password.</p>
+					<p>If you've forgotten your email address, <a href="#">chat with a customer service representative</a> for more assistance.</p>
+					<div class="email-address clear">
+						<label for="email-address2">Email address</label>
+						<input type="text" id="email-address2" />
+					</div>
+				</div>
+				<div class="btn-wrap">
+					<a href="#">Cancel</a>
+					<a href="#" class="button blue retrieve-password">Retrieve password</a>
+				</div>
+            </div> 
+			<!-- popup three content end --> 
+			<!-- popup password updated confirmed -->                  
+            <div id="password-updated-pop-up" class="bd password-updated-pop-up" style="height:264px; display:none;">               	
+				<h2 class="title">Password Confirmed</h2>
+				<div class="main-wrap">             
+					<p>Your password has been updated</p>
+				</div>
+				<div class="btn-wrap">
+					<a class="button blue small-btn ok">OK</a>
+				</div>
+            </div> 
+			<!-- popup password updated confirmed end -->
+        </div>     
+    </div>
+    
+    <!--  popup end -->

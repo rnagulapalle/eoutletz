@@ -1,0 +1,14 @@
+{
+	"Welcome" : {
+		"Username" : "Janice",
+		"Sitename" : "Jetsolutions"
+	},
+	"SignIn" : {},
+	"SideBar" : {
+		"Title" : "How does HRA work?",
+		"Text1" : "Sign in to see your available HRA amount",
+		"Text2" : "Enroll in Individual Health Plans",
+		"Text3" : "Pay your premiums and be reimbursed for through your HRA."
+	}
+
+}
