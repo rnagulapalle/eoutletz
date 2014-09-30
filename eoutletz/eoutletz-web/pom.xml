@@ -14,7 +14,7 @@
 	<name>eoutletz-web</name>
 
 	<properties>
-		<!-- <env>src/main/resources</env>
+		<env>src/main/resources</env>
 		<spring.version>4.0.3.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
 		<jdk.version>1.7</jdk.version>
@@ -35,7 +35,7 @@
 		<xmltooling.version>1.4.1</xmltooling.version>
 		<openws.version>1.5.1</openws.version>
 		<mysql-connector-java.version>5.1.13</mysql-connector-java.version>
-		<hsqldb.version>2.3.1</hsqldb.version> -->
+		<hsqldb.version>2.3.1</hsqldb.version>
 	</properties>
 
 	<repositories>
@@ -366,8 +366,8 @@
 	<!-- build details -->
 	<build>
 		<finalName>eoutletz</finalName>
-		<!-- <plugins>
-			<plugin>
+		<plugins>
+			<!-- <plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.0</version>
@@ -376,7 +376,7 @@
 					<server>TomcatServer</server>
 					<path>/${project.build.finalName}</path>
 				</configuration>
-			</plugin>
+			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -399,7 +399,7 @@
 					</webResources>
 				</configuration>
 			</plugin>
-		</plugins> -->
+		</plugins> 
 	</build>
 
 	<profiles>
