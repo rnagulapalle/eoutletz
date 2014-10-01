@@ -12,9 +12,9 @@
 	<context:property-placeholder location="classpath:app.properties" ignore-unresolvable="true"/>
 	<context:property-placeholder location="classpath:service.properties" ignore-unresolvable="true"/>
 	
-	<!-- <context:component-scan base-package="com.ehi.bfadapter.core">
+	<context:component-scan base-package="com.eoutletz.exception">
 		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
-	</context:component-scan> -->
+	</context:component-scan>
 	
 	<!-- <import resource="classpath*:config-service.xml"/> -->
 	<import resource="classpath:spring/config-business.xml"/>
