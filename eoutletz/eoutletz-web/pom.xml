@@ -111,12 +111,12 @@
 			<version>${slf4j.version}</version>
 		</dependency> -->
 		<!-- log4j dependencies -->
-		<!-- <dependency>
+		<dependency>
 			<groupId>org.apache.log4j</groupId>
 			<artifactId>com.springsource.org.apache.log4j</artifactId>
 			<version>${apache.log4j.version}</version>
-		</dependency> -->
-		<!-- <dependency>
+		</dependency>
+		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
@@ -138,8 +138,8 @@
 					<artifactId>jmxri</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency> -->
-		<!-- <dependency>
+		</dependency> 
+		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>apache-log4j-extras</artifactId>
 			<version>${log4j-extras.version}</version>
@@ -153,7 +153,7 @@
 			<groupId>xml-apis</groupId>
 			<artifactId>xml-apis</artifactId>
 			<version>${xml-apis}</version>
-		</dependency> -->
+		</dependency>
 		<!-- open saml dependencies -->
 		<!-- <dependency>
 			<groupId>org.opensaml</groupId>
