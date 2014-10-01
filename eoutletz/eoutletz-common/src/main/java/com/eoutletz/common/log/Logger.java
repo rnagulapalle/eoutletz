@@ -5,7 +5,7 @@ import org.apache.log4j.Priority;
 /**
  * Custom logger for BFA.
  * 
- * @author filipol
+ * @author
  */
 public final class Logger {
     private org.apache.log4j.Logger LOGGER;
