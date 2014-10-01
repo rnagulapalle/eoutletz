@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.eoutletz.common.log.Logger;
 import com.eoutletz.common.rest.response.BaseResponseResource;
 import com.eoutletz.service.user.EchoService;
 
@@ -16,12 +17,13 @@ import com.eoutletz.service.user.EchoService;
 @RequestMapping("/api/rest")
 public class EoutletzRestEchoController extends EoutletzRestBaseController {
 
+	private final static Logger logger = Logger.getLogger(EoutletzRestEchoController.class);
 	@Autowired
 	private EchoService echoService;
 	
 	@RequestMapping(value = "/echo/", method = RequestMethod.GET, produces="application/json")
 	public ResponseEntity<BaseResponseResource> getEcho(HttpServletRequest request) {
-		
+		logger.info("....echo has been called..");
 		BaseResponseResource response = new BaseResponseResource(HttpStatus.OK.value(), echoService.echo());
 		org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
 		headers.setContentType(org.springframework.http.MediaType.APPLICATION_JSON);
