@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.eoutletz.common.log.Logger;
 import com.eoutletz.common.rest.response.BaseResponseResource;
-import com.eoutletz.service.user.EchoService;
+import com.eoutletz.service.EchoService;
 
 @Controller
 @RequestMapping("/api/rest")

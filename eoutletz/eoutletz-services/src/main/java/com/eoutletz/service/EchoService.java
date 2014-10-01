@@ -1,4 +1,4 @@
-package com.eoutletz.service.user;
+package com.eoutletz.service;
 
 public interface EchoService{
 	
