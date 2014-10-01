@@ -3,7 +3,7 @@ package com.eoutletz.common.log;
 import org.apache.log4j.Priority;
 
 /**
- * Custom logger for BFA.
+ *
  * 
  * @author
  */
