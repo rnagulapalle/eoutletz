@@ -282,7 +282,7 @@
 			<version>${geronimo-servlet}</version>
 		</dependency> -->
 		<!-- servelet api -->
-		<!-- <dependency>
+		 <dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>${servlet-api}</version>
@@ -307,7 +307,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>${spring.version}</version>
-		</dependency> -->
+		</dependency> 
 		<!-- moved to tomcat level as jndi -->
 		<!-- <dependency>
 			<groupId>mysql</groupId>
@@ -405,6 +405,9 @@
 	<profiles>
 		<profile>
 			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<properties>
 				<env>conf/dev</env>
 			</properties>
