@@ -2,11 +2,8 @@ package com.eoutletz.persist.service.impl;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.nullValue;
-
-import java.util.List;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +29,18 @@ public class UserPersistServiceImplTest extends SuperPersistServiceImplTest {
 	@Test
 	public void testSaveUser() {
 		User user = userSave();
+		assertThat(user, notNullValue());
+	}
+	
+	@Test
+	public void testSaveMerchant() {
+		User user = createMerchant();
+		assertThat(user, notNullValue());
+	}
+	
+	@Test
+	public void testSaveMerchantByService() {
+		User user = createMerchantByService();
 		assertThat(user, notNullValue());
 	}
 
@@ -92,6 +101,29 @@ public class UserPersistServiceImplTest extends SuperPersistServiceImplTest {
 		User user = new User();
 
 		user.setFirstName(DUMMY_DATA);
+		user.setLastName(DUMMY_DATA);
+		user.setEmail(DUMMY_DATA);
+
+		return userRepository.save(user);
+	}
+	
+	private User createMerchant() {
+		User user = new User();
+
+		user.setFirstName(DUMMY_DATA);
+		user.setPassword(DUMMY_DATA);
+		user.setMerchant(Boolean.TRUE);
+		user.setLastName(DUMMY_DATA);
+		user.setEmail(DUMMY_DATA);
+
+		return userRepository.save(user);
+	}
+	private User createMerchantByService() {
+		User user = new User();
+
+		user.setFirstName(DUMMY_DATA);
+		user.setPassword(DUMMY_DATA);
+		user.setMerchant(Boolean.TRUE);
 		user.setLastName(DUMMY_DATA);
 		user.setEmail(DUMMY_DATA);
 

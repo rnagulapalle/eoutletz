@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS User (
     lastname varchar(255)    NOT NULL ,
     email varchar(255)    NOT NULL ,
     password varachr(25) NOT NULL,
+    merchant char(1) NOT NULL default 'N',
     create_date date    NOT NULL ,
     update_date date    NOT NULL ,
     CONSTRAINT User_pk PRIMARY KEY (id)
