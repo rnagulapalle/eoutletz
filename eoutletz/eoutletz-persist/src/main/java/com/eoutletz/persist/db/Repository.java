@@ -2,9 +2,7 @@ package com.eoutletz.persist.db;
 
 import java.util.List;
 
-/**
- * @author filipol
- */
+
 public interface Repository<T extends Entity> {
 
     public void setupEntityClass(Class<T> clazz);

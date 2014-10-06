@@ -6,16 +6,13 @@ import org.hibernate.FlushMode;
 import org.hibernate.Session;
 import org.springframework.transaction.annotation.Transactional;
 
-//import com.eoutletz.common.util.ReflectionUtil;
+import com.eoutletz.common.util.ReflectionUtil;
 
-/**
- * @author filipol
- */
 public abstract class BaseRepository<T extends Entity> implements Repository<T> {
     protected Class<T> clazz;
     
     public BaseRepository() {
-        //this.clazz = ReflectionUtil.getClassGenericType(getClass());
+        this.clazz = ReflectionUtil.getClassGenericType(getClass());
     }
 
     public void setupEntityClass(Class<T> clazz) {

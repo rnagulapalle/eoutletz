@@ -6,9 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
-/**
- * @author filipol
- */
 @MappedSuperclass
 public abstract class IdEntity<T> extends BaseEntity<T> {
 

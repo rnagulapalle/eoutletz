@@ -13,13 +13,13 @@ import org.hibernate.annotations.GenerationTime;
 public abstract class BaseEntity<T> implements Entity, Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Column(name = "createdTime",
+    @Column(name = "create_date	",
             nullable = false,
             columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @Generated(value = GenerationTime.INSERT)
     protected Date createdTime;
 
-    @Column(name = "updatedTime",
+    @Column(name = "update_date",
             nullable = false,
             columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @Generated(value = GenerationTime.ALWAYS)
