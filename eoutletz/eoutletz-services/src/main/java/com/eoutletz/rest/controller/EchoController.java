@@ -14,10 +14,9 @@ import com.eoutletz.common.rest.response.BaseResponseResource;
 import com.eoutletz.service.EchoService;
 
 @Controller
-@RequestMapping("/api/rest")
-public class EoutletzRestEchoController extends EoutletzRestBaseController {
+public class EchoController extends BaseController {
 
-	private final static Logger logger = Logger.getLogger(EoutletzRestEchoController.class);
+	private final static Logger logger = Logger.getLogger(EchoController.class);
 	@Autowired
 	private EchoService echoService;
 	

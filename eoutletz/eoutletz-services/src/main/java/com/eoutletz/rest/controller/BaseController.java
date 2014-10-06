@@ -4,8 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("")
-public abstract class EoutletzRestBaseController {
+@RequestMapping("/api/rest")
+public abstract class BaseController {
 
 	//TODO: add common functionality for all controllers
 }
