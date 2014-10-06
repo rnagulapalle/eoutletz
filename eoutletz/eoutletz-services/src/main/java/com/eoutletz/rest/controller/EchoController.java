@@ -14,6 +14,7 @@ import com.eoutletz.common.rest.response.BaseResponseResource;
 import com.eoutletz.service.EchoService;
 
 @Controller
+@RequestMapping("/v1")
 public class EchoController extends BaseController {
 
 	private final static Logger logger = Logger.getLogger(EchoController.class);

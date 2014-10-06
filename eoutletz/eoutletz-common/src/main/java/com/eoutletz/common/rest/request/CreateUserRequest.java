@@ -10,6 +10,7 @@ public class CreateUserRequest {
 	private String email;
 	private String password;
 	private boolean merchant;
+	
 	public String getFirstName() {
 		return firstName;
 	}

@@ -8,10 +8,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import com.eoutletz.common.log.Logger;
 import com.eoutletz.common.rest.response.ErrorResponseResource;
+import com.eoutletz.rest.exceptions.BaseRestException;
+import com.eoutletz.rest.exceptions.InvalidArgumentException;
+import com.eoutletz.rest.exceptions.UserCreationFailedException;
 @ControllerAdvice
 public class EoutletzExceptionHandler extends ResponseEntityExceptionHandler{
-
+	
+	private Logger logger = Logger.getLogger(EoutletzExceptionHandler.class);
 	/**
 	 * this method will be called if user pass illegal argument in URL
 	 * 
@@ -19,14 +24,12 @@ public class EoutletzExceptionHandler extends ResponseEntityExceptionHandler{
 	 * @param request
 	 * @return
 	 */
-	@ExceptionHandler(value = { IllegalArgumentException.class })
+	@ExceptionHandler(value = { InvalidArgumentException.class, UserCreationFailedException.class })
 	public ResponseEntity<Object> handleInvalidArgumentException(RuntimeException ex, WebRequest request) {
-//		logger.error("failed", ex);
-//		
-//		logger.info("handling Invalid Argument Exception - Catching: " + ex.getClass().getSimpleName());
-		IllegalArgumentException invalidBenefitFocusArgument = (IllegalArgumentException) ex;
+		logger.error("failed", ex);
+		BaseRestException baseRestException = (BaseRestException) ex;
 		
-		ErrorResponseResource error = new ErrorResponseResource(HttpStatus.BAD_REQUEST.value(), invalidBenefitFocusArgument.getMessage());
+		ErrorResponseResource error = new ErrorResponseResource(HttpStatus.BAD_REQUEST.value(), baseRestException.getMessage());
         
 		org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
