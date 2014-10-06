@@ -8,8 +8,9 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 	
-	<!-- <context:annotation-config/>
-	<context:component-scan base-package="com.ehi.bfadapter.persist.repository" />
+	<context:annotation-config/>
+	<!-- <context:component-scan base-package="com.eoutletz.persist.service.impl" /> -->
+	<context:component-scan base-package="com.eoutletz.persist" />
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
       	<property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
@@ -20,7 +21,7 @@
 	
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="com.ehi.bfadapter.persist"/>
+        <property name="packagesToScan" value="com.eoutletz.persist"/>
         
         <property name="hibernateProperties">
         	<props>
@@ -37,7 +38,7 @@
     
     <tx:annotation-driven transaction-manager="transactionManager"/>
     
-    <bean id="dataAccess" class="com.ehi.bfadapter.persist.db.DataAccess">
+    <bean id="dataAccess" class="com.eoutletz.persist.db.DataAccess">
     	<property name="sessionFactory" ref="sessionFactory" />
-    </bean> -->
+    </bean>
 </beans>
