@@ -33,6 +33,8 @@
 			<groupId>com.eoutletz.common</groupId>
 			<artifactId>eoutletz-common</artifactId>
 			<version>1.0-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>/Users/rnagulapalle/.m2/maven.repo/com/eoutletz/common/eoutletz-common/1.0-SNAPSHOT/eoutletz-common-1.0-SNAPSHOT.jar</systemPath>
 		</dependency>
 		<!-- <dependency>
 			<groupId>junit</groupId>

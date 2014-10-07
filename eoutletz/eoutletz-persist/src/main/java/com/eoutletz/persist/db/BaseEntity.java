@@ -33,4 +33,11 @@ public abstract class BaseEntity<T> implements Entity, Serializable {
         return updatedTime;
     }
 
+	public void setCreatedTime(Date createdTime) {
+		this.createdTime = createdTime;
+	}
+
+	public void setUpdatedTime(Date updatedTime) {
+		this.updatedTime = updatedTime;
+	}
 }

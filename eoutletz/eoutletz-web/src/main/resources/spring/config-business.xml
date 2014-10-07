@@ -15,6 +15,7 @@
 	<context:component-scan base-package="com.ehi.bfadapter.core" />-->
 	<context:component-scan base-package="com.eoutletz.service" />
 	<context:component-scan base-package="com.eoutletz.common" />
+	<context:component-scan base-package="com.eoutletz.persist" />
 	
 	<!--  needed following beans for unit test cases -->
 	<!--<bean id="samlResponse" class="com.ehi.bfadapter.core.saml.response.SAMLResponse" />

@@ -13,7 +13,7 @@
 -- Type of address such as billing and shipping
 
 CREATE TABLE IF NOT EXISTS Address_Type (
-    id int    NOT NULL ,
+    id int NOT NULL AUTO_INCREMENT,
     type varchar(255)    NOT NULL ,
     CONSTRAINT Address_Type_pk PRIMARY KEY (id)
 ) ENGINE=InnoDB;
@@ -21,19 +21,19 @@ CREATE TABLE IF NOT EXISTS Address_Type (
 
 -- Table: User
 CREATE TABLE IF NOT EXISTS User (
-    id int    NOT NULL ,
+    id int    NOT NULL AUTO_INCREMENT ,
     firstname varchar(255)    NOT NULL ,
     lastname varchar(255)    NOT NULL ,
     email varchar(255)    NOT NULL ,
-    password varachr(25) NOT NULL,
-    merchant char(1) NOT NULL default 'N',
-    create_date date    NOT NULL ,
-    update_date date    NOT NULL ,
+    password varchar(25) NOT NULL,
+    merchant char(1) NOT NULL DEFAULT 'N',
+    create_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    update_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     CONSTRAINT User_pk PRIMARY KEY (id)
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS Address (
-    id int    NOT NULL ,
+    id int    NOT NULL AUTO_INCREMENT ,
     address1 varchar(255)    NOT NULL ,
     address2 varchar(255)    NULL ,
     city varchar(255)    NOT NULL ,
@@ -42,6 +42,8 @@ CREATE TABLE IF NOT EXISTS Address (
     postalcode varchar(255)    NOT NULL ,
     user_id int    NOT NULL ,
     address_type_id int    NOT NULL ,
+    create_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    update_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     CONSTRAINT Address_pk PRIMARY KEY (id),
     CONSTRAINT Address_Address_Type FOREIGN KEY Address_Address_Type (address_type_id) REFERENCES Address_Type (id),
     CONSTRAINT Address_User FOREIGN KEY Address_User (user_id) REFERENCES User (id)
@@ -51,7 +53,7 @@ CREATE TABLE IF NOT EXISTS Address (
 
 -- Table: Color
 CREATE TABLE IF NOT EXISTS Color (
-    id int    NOT NULL ,
+    id int    NOT NULL AUTO_INCREMENT ,
     color int    NOT NULL ,
     CONSTRAINT Color_pk PRIMARY KEY (id)
 ) ENGINE=InnoDB;
@@ -61,7 +63,7 @@ CREATE TABLE IF NOT EXISTS Color (
 -- like visa, master, paypal, google walet
 
 CREATE TABLE IF NOT EXISTS Payment_Type (
-    id int    NOT NULL ,
+    id int    NOT NULL AUTO_INCREMENT,
     type varchar(255)    NOT NULL ,
     CONSTRAINT Payment_Type_pk PRIMARY KEY (id)
 ) ENGINE=InnoDB;
@@ -72,9 +74,9 @@ CREATE TABLE IF NOT EXISTS Payment_Type (
 CREATE TABLE IF NOT EXISTS Partner (
     name varchar(255)    NOT NULL ,
     email varchar(255)    NOT NULL ,
-    id int    NOT NULL ,
-    create_date date    NOT NULL ,
-    update_date date    NOT NULL ,
+    id int    NOT NULL AUTO_INCREMENT,
+    create_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    update_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     CONSTRAINT Partner_pk PRIMARY KEY (id)
 ) ENGINE=InnoDB;
 
@@ -82,7 +84,7 @@ CREATE TABLE IF NOT EXISTS Partner (
 -- This table holds different categories such as saree, dress (kurti), shoe, accessary
 
 CREATE TABLE IF NOT EXISTS Product_Category (
-    id int    NOT NULL ,
+    id int    NOT NULL AUTO_INCREMENT,
     name varchar(255)    NOT NULL ,
     CONSTRAINT Product_category_pk PRIMARY KEY (id)
 ) ENGINE=InnoDB;
@@ -92,7 +94,7 @@ CREATE TABLE IF NOT EXISTS Product_Category (
 
 
 CREATE TABLE IF NOT EXISTS Product (
-    id int    NOT NULL ,
+    id int    NOT NULL AUTO_INCREMENT,
     product_category_id int    NOT NULL ,
     sku char(10)    NOT NULL ,
     name varchar(255)    NOT NULL ,
@@ -105,8 +107,8 @@ CREATE TABLE IF NOT EXISTS Product (
     units_in_stock int    NOT NULL ,
     units_in_order int    NOT NULL ,
     unit_price decimal(12,2)    NOT NULL ,
-    create_date date    NOT NULL ,
-    update_date date    NOT NULL ,
+    create_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    update_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     CONSTRAINT Product_pk PRIMARY KEY (id),
     CONSTRAINT product_Partner FOREIGN KEY product_Partner (partner_id) REFERENCES Partner (id),
     CONSTRAINT product_category_product FOREIGN KEY product_category_product (product_category_id) REFERENCES Product_Category (id)
@@ -114,19 +116,19 @@ CREATE TABLE IF NOT EXISTS Product (
 
 -- Table: Order_Status
 CREATE TABLE IF NOT EXISTS Order_Status (
-    id int    NOT NULL ,
+    id int    NOT NULL AUTO_INCREMENT,
     status int    NOT NULL ,
     CONSTRAINT Order_Status_pk PRIMARY KEY (id)
 ) ENGINE=InnoDB;
 
 -- Table: `Order`
 CREATE TABLE IF NOT EXISTS `Order` (
-    id int    NOT NULL ,
+    id int    NOT NULL AUTO_INCREMENT,
     product_id int    NOT NULL ,
     user_id int    NOT NULL ,
     payment_type_id int    NOT NULL ,
-    create_date date    NOT NULL ,
-    update_date date    NOT NULL ,
+    create_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    update_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     address_id int    NOT NULL ,
     CONSTRAINT Order_pk PRIMARY KEY (id),
     CONSTRAINT Order_Address FOREIGN KEY Order_Address (address_id) REFERENCES Address (id),
@@ -141,9 +143,9 @@ CREATE TABLE IF NOT EXISTS `Order` (
 -- this holds order tracking history
 
 CREATE TABLE IF NOT EXISTS Order_Tracking (
-    id int    NOT NULL ,
-    create_date date    NOT NULL ,
-    update_date date    NOT NULL ,
+    id int    NOT NULL AUTO_INCREMENT,
+    create_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    update_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     order_id int    NOT NULL ,
     comments varchar(255)    NOT NULL ,
     Order_Status_id int    NOT NULL ,
@@ -157,7 +159,7 @@ CREATE TABLE IF NOT EXISTS Order_Tracking (
 -- This table holds information about partner contact details such as physical address of business and office address
 
 CREATE TABLE IF NOT EXISTS Partner_Contact (
-    id int    NOT NULL ,
+    id int    NOT NULL AUTO_INCREMENT,
     address1 varchar(255)    NOT NULL ,
     address2 varchar(255)    NULL ,
     city varchar(255)    NOT NULL ,
@@ -165,8 +167,8 @@ CREATE TABLE IF NOT EXISTS Partner_Contact (
     country varchar(255)    NOT NULL ,
     type_id int    NOT NULL ,
     partner_id int    NOT NULL ,
-    create_date date    NOT NULL ,
-    update_date date    NOT NULL ,
+    create_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    update_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     CONSTRAINT Partner_Contact_pk PRIMARY KEY (id),
     CONSTRAINT Partner_Contact_Partner FOREIGN KEY Partner_Contact_Partner (partner_id) REFERENCES Partner (id) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB;
@@ -175,7 +177,7 @@ CREATE TABLE IF NOT EXISTS Partner_Contact (
 -- holds type of phone primary , secondary etc
 
 CREATE TABLE IF NOT EXISTS Phone (
-    id int    NOT NULL ,
+    id int    NOT NULL AUTO_INCREMENT,
     type varchar(255)    NOT NULL ,
     phone varchar(15)    NOT NULL ,
     user_id int    NOT NULL ,
@@ -185,11 +187,11 @@ CREATE TABLE IF NOT EXISTS Phone (
 
 -- Table: Product_Color
 CREATE TABLE IF NOT EXISTS Product_Color (
-    id int    NOT NULL ,
+    id int    NOT NULL AUTO_INCREMENT,
     product_id int    NOT NULL ,
     color_id int    NOT NULL ,
-    create_date date    NOT NULL ,
-    update_date date    NOT NULL ,
+    create_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    update_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     CONSTRAINT Product_Color_pk PRIMARY KEY (id),
     CONSTRAINT Product_Color_Color FOREIGN KEY Product_Color_Color (color_id) REFERENCES Color (id),
     CONSTRAINT Product_Color_Product FOREIGN KEY Product_Color_Product (product_id) REFERENCES Product (id)
@@ -200,18 +202,18 @@ CREATE TABLE IF NOT EXISTS Product_Color (
 -- This table hold different sizes of a product.
 
 CREATE TABLE IF NOT EXISTS Size (
-    id int    NOT NULL ,
+    id int    NOT NULL AUTO_INCREMENT,
     size decimal(12,2)    NOT NULL ,
     CONSTRAINT Size_pk PRIMARY KEY (id)
 ) ENGINE=InnoDB;
 
 -- Table: Product_Size
 CREATE TABLE IF NOT EXISTS Product_Size (
-    id int    NOT NULL ,
+    id int    NOT NULL AUTO_INCREMENT,
     size_id int    NOT NULL ,
     product_id int    NOT NULL ,
-    create_date date    NOT NULL ,
-    update_date date    NOT NULL ,
+    create_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    update_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     CONSTRAINT Product_Size_pk PRIMARY KEY (id),
     CONSTRAINT Product_Size_Product FOREIGN KEY Product_Size_Product (product_id) REFERENCES Product (id),
     CONSTRAINT Product_Size_Size FOREIGN KEY Product_Size_Size (size_id) REFERENCES Size (id)

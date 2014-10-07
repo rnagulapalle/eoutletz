@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.eoutletz.common.log.Logger;
 import com.eoutletz.common.rest.response.BaseResponseResource;
+import com.eoutletz.rest.exceptions.InvalidArgumentException;
 import com.eoutletz.service.EchoService;
 
 @Controller
-@RequestMapping("/v1")
+@RequestMapping("/api/rest/v1")
 public class EchoController extends BaseController {
 
 	private final static Logger logger = Logger.getLogger(EchoController.class);
@@ -33,6 +34,6 @@ public class EchoController extends BaseController {
 	
 	@RequestMapping(value = "/error/", method = RequestMethod.GET, produces="application/json")
 	public ResponseEntity<BaseResponseResource> getError(HttpServletRequest request) {
-		throw new IllegalArgumentException("Invalid argument found, good luck!");
+		throw new InvalidArgumentException("Invalid argument found, good luck!");
 	}
 }

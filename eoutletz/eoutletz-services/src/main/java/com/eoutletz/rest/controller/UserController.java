@@ -18,7 +18,7 @@ import com.eoutletz.rest.exceptions.UserCreationFailedException;
 import com.eoutletz.service.UserService;
 
 @Controller
-@RequestMapping("/v1")
+@RequestMapping("/api/rest/v1")
 public class UserController extends BaseController {
 
 	private Logger logger  = Logger.getLogger(UserController.class);
