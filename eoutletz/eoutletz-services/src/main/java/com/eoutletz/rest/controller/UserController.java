@@ -53,7 +53,7 @@ public class UserController extends BaseController {
 		User user = userService.createUser(createUserRequest.getFirstName(), createUserRequest.getLastName(), createUserRequest.getEmail(), createUserRequest.getPassword(), createUserRequest.isMerchant());
 		if(user == null) throw new UserCreationFailedException("User creation failed");
 		
-		BaseResponseResource response = new BaseResponseResource(HttpStatus.OK.value(), "test");
+		BaseResponseResource response = new BaseResponseResource(HttpStatus.OK.value(), "Successfully created account");
 		org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
 		headers.setContentType(org.springframework.http.MediaType.APPLICATION_JSON);
 
