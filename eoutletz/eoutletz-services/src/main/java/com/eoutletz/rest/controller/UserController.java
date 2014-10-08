@@ -39,7 +39,7 @@ public class UserController extends BaseController {
 		if (result.hasErrors()) {
 			logger.error("Error occuered :" + errors.getFieldError().getField());
 			// check this to display user error
-			//http://captechconsulting.com/blog/jens-alm/versioned-validated-and-secured-rest-services-spring-40-2
+			//TODO:http://captechconsulting.com/blog/jens-alm/versioned-validated-and-secured-rest-services-spring-40-2
 			throw new InvalidArgumentException("Invalid request found");
 			}
 		if(createUserRequest == null) throw new InvalidArgumentException("Invalid request found");
