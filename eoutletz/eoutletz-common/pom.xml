@@ -22,13 +22,12 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.outletz.exceptions</groupId>
 			<artifactId>eoutletz-exceptions</artifactId>
 			<version>1.0-SNAPSHOT</version>
-			<scope>system</scope>
-			<systemPath>/Users/rnagulapalle/.m2/maven.repo/com/eoutletz/exceptions/eoutletz-exceptions/1.0-SNAPSHOT/eoutletz-exceptions-1.0-SNAPSHOT.jar</systemPath>
-		</dependency>
+			<scope>provided</scope>
+		</dependency> -->
 		<!-- <dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
