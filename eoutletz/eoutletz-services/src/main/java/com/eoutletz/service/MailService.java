@@ -1,7 +1,9 @@
 package com.eoutletz.service;
 
+import com.eoutletz.persist.entity.User;
+
 public interface MailService {
 
 	//TODO: Order details
-	public void orderConfirmationEmail(String toEmail);
+	public void orderConfirmationEmail(User user);
 }

@@ -3,6 +3,7 @@ package com.eoutletz.service.impl;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.eoutletz.persist.entity.User;
 import com.eoutletz.service.MailService;
 
 public class MailServiceImplTest extends SuperServiceImplTest{
@@ -12,6 +13,10 @@ public class MailServiceImplTest extends SuperServiceImplTest{
 	
 	@Test
 	public void orderConfirmationEmailTest(){
-		mailService.orderConfirmationEmail("raj.jsp@gmail.com");
+		
+		User user = new User();
+		user.setEmail("raj.jsp@gmail.com");
+		user.setFirstName("Raj");
+		mailService.orderConfirmationEmail(user);
 	}
 }
