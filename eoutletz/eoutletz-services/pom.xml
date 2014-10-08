@@ -13,16 +13,6 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>eoutletz-services</name>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring.version>4.0.3.RELEASE</spring.version>
-		<spring-ws-security.version>2.1.4.RELEASE</spring-ws-security.version>
-		<log4j.version>1.2.16</log4j.version>
-		<junit.version>4.11</junit.version>
-		<xmlunit.version>1.5</xmlunit.version>
-		<mockito-all>1.9.5</mockito-all>
-	</properties>
-
 	<repositories>
 		<repository>
 			<id>jboss.repository.releases.public</id>
@@ -47,87 +37,30 @@
 			<artifactId>eoutletz-exceptions</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
-
-		<!-- <dependency>
-			<groupId>org.springframework.ws</groupId>
-			<artifactId>spring-ws-security</artifactId>
-			<version>${spring-ws-security.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-beans</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-expression</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>${log4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>xmlunit</groupId>
-			<artifactId>xmlunit</artifactId>
-			<version>${xmlunit.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>${mockito-all}</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.0.1</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz</artifactId>
-			<version>2.2.1</version>
-		</dependency>
-		<dependency>  
-		    <groupId>org.quartz-scheduler</groupId>  
-		    <artifactId>quartz-jobs</artifactId>  
-		    <version>2.2.1</version>  
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context-support</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.activation</groupId>
-			<artifactId>activation</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4</version>
-		</dependency>			 -->
+		<!-- <dependency> <groupId>org.springframework.ws</groupId> <artifactId>spring-ws-security</artifactId> 
+			<version>${spring-ws-security.version}</version> <exclusions> <exclusion> 
+			<groupId>org.springframework</groupId> <artifactId>spring-beans</artifactId> 
+			</exclusion> </exclusions> </dependency> <dependency> <groupId>org.springframework</groupId> 
+			<artifactId>spring-expression</artifactId> <version>${spring.version}</version> 
+			</dependency> <dependency> <groupId>log4j</groupId> <artifactId>log4j</artifactId> 
+			<version>${log4j.version}</version> </dependency> <dependency> <groupId>org.springframework</groupId> 
+			<artifactId>spring-test</artifactId> <version>${spring.version}</version> 
+			</dependency> <dependency> <groupId>junit</groupId> <artifactId>junit</artifactId> 
+			<version>${junit.version}</version> <scope>test</scope> </dependency> <dependency> 
+			<groupId>xmlunit</groupId> <artifactId>xmlunit</artifactId> <version>${xmlunit.version}</version> 
+			<scope>test</scope> </dependency> <dependency> <groupId>org.mockito</groupId> 
+			<artifactId>mockito-all</artifactId> <version>${mockito-all}</version> </dependency> 
+			<dependency> <groupId>javax.servlet</groupId> <artifactId>javax.servlet-api</artifactId> 
+			<version>3.0.1</version> <scope>provided</scope> </dependency> <dependency> 
+			<groupId>org.quartz-scheduler</groupId> <artifactId>quartz</artifactId> <version>2.2.1</version> 
+			</dependency> <dependency> <groupId>org.quartz-scheduler</groupId> <artifactId>quartz-jobs</artifactId> 
+			<version>2.2.1</version> </dependency> <dependency> <groupId>org.springframework</groupId> 
+			<artifactId>spring-context</artifactId> <version>${spring.version}</version> 
+			</dependency> <dependency> <groupId>org.springframework</groupId> <artifactId>spring-context-support</artifactId> 
+			<version>${spring.version}</version> </dependency> <dependency> <groupId>javax.activation</groupId> 
+			<artifactId>activation</artifactId> <version>1.1</version> </dependency> 
+			<dependency> <groupId>javax.mail</groupId> <artifactId>mail</artifactId> 
+			<version>1.4</version> </dependency> -->
 	</dependencies>
 
 	<build>
@@ -140,40 +73,6 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
-			<!-- <plugin>
-				<groupId>org.jvnet.jaxb2.maven2</groupId>
-				<artifactId>maven-jaxb2-plugin</artifactId>
-				<configuration>
-					<schemaDirectory>src/main/resources/schema/bf/memberservice</schemaDirectory>
-					<schemaIncludes>
-						<include>MemberService3.xsd</include>
-						<include>MemberService6.xsd</include>
-						<include>MemberService12.xsd</include>
-						<include>MemberService.xsd</include>
-						<include>MemberService2.xsd</include>
-						<include>MemberService4.xsd</include>
-						<include>MemberService5.xsd</include>
-						<include>MemberService7.xsd</include>
-						<include>MemberService10.xsd</include>
-						<include>MemberService11.xsd</include>
-						<include>MemberService9.xsd</include>
-						<include>MemberService0.xsd</include>
-						<include>MemberService8.xsd</include>
-						<include>MemberService1.xsd</include>
-						<include>MemberService14.xsd</include>
-						<include>MemberService13.xsd</include>
-					</schemaIncludes>
-					<generatePackage>com.ehi.bfadapter.domain</generatePackage>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin> -->
 		</plugins>
 	</build>
 </project>

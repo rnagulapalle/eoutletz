@@ -1,7 +1,5 @@
 package com.eoutletz.rest.controller;
 
-import java.util.Arrays;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
