@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS User (
     firstname varchar(255)    NOT NULL ,
     lastname varchar(255)    NOT NULL ,
     email varchar(255)    NOT NULL ,
-    password varchar(25) NOT NULL,
+    password varchar(255) NOT NULL,
     merchant char(1) NOT NULL DEFAULT 'N',
     create_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     update_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

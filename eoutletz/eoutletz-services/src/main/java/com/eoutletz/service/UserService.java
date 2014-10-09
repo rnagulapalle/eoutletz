@@ -7,4 +7,5 @@ public interface UserService {
 	public User createUser(String firstName, String lastName, String email, String password, boolean merchant);
 	public User updateUser(User user);
 	public User getUser(String email);
+	public User getUser(String email, String password);
 }

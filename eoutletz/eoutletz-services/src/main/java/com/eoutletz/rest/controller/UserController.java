@@ -39,14 +39,8 @@ public class UserController extends BaseController {
 			// check this to display user error
 			//TODO:http://captechconsulting.com/blog/jens-alm/versioned-validated-and-secured-rest-services-spring-40-2
 			throw new InvalidArgumentException("Invalid request found");
-			}
-		if(createUserRequest == null) throw new InvalidArgumentException("Invalid request found");
-		
-		if(userService.getUser(createUserRequest.getEmail()) != null)
-		{
-			//user already exist with this email
-			throw new UserCreationFailedException("User already exist with this email " + createUserRequest.getEmail());
 		}
+		if(createUserRequest == null) throw new InvalidArgumentException("Invalid request found");
 		
 		User user = userService.createUser(createUserRequest.getFirstName(), createUserRequest.getLastName(), createUserRequest.getEmail(), createUserRequest.getPassword(), createUserRequest.isMerchant());
 		if(user == null) throw new UserCreationFailedException("User creation failed");
