@@ -59,7 +59,7 @@ public class UserController extends BaseController {
 	}
 	
 	@RequestMapping(value = "/user/{email}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<UserResponse> getUser(@PathVariable String email, BindingResult result, Errors errors) {
+	public ResponseEntity<UserResponse> getUser(@PathVariable("email") String email) {
 		
 		logger.info("....get user has been called..");
 		if(email == null) throw new InvalidArgumentException("Invalid email");
@@ -68,12 +68,14 @@ public class UserController extends BaseController {
 		if(user == null) throw new NoSuchResourceFoundException("No user found with email " + email);
 		BaseResponseResource baseResponse = new BaseResponseResource(HttpStatus.OK.value(), "Successfully created account");
 		UserResponse response = new UserResponse();
-		response.setBaseResponseResource(baseResponse);
+		
 		Data data = new Data();
+		data.setResponse(baseResponse);
 		data.setFirstname(user.getFirstName());
 		data.setLastname(user.getLastName());
 		data.setEmail(user.getEmail());
 		response.setData(data);
+		
 		org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
 		headers.setContentType(org.springframework.http.MediaType.APPLICATION_JSON);
 

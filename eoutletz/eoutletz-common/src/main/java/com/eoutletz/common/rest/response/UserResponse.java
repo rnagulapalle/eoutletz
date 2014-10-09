@@ -6,13 +6,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class UserResponse {
 
 	private Data data;
-	private BaseResponseResource baseResponseResource;
 	
 	@JsonIgnoreProperties(ignoreUnknown = true)
 	public static class Data{
+		private BaseResponseResource response;
 		private String firstname;
 		private String lastname;
 		private String email;
+		
 		public String getFirstname() {
 			return firstname;
 		}
@@ -31,6 +32,12 @@ public class UserResponse {
 		public void setEmail(String email) {
 			this.email = email;
 		}
+		public BaseResponseResource getResponse() {
+			return response;
+		}
+		public void setResponse(BaseResponseResource response) {
+			this.response = response;
+		}
 	}
 
 	public Data getData() {
@@ -39,13 +46,5 @@ public class UserResponse {
 
 	public void setData(Data data) {
 		this.data = data;
-	}
-
-	public BaseResponseResource getBaseResponseResource() {
-		return baseResponseResource;
-	}
-
-	public void setBaseResponseResource(BaseResponseResource baseResponseResource) {
-		this.baseResponseResource = baseResponseResource;
 	}
 }

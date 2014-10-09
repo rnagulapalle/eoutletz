@@ -45,7 +45,7 @@ public class SecurityUtil {
 	
 		String temp = new SimpleDateFormat("yyyy-MM-dd HH").format(date);
 		String salt = firstname + temp;
-		return hmacSha1(salt + temp, Constants.HMAC_KEY);
+		return hmacSha1(salt + password, Constants.HMAC_KEY);
 	}
 	
 //	public static void main(String args[]) throws ParseException{
