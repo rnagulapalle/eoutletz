@@ -18,6 +18,9 @@
   <classpathentry kind="var" path="M2_REPO/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar"/>
   <classpathentry kind="src" path="/eoutletz-persist"/>
   <classpathentry kind="src" path="/eoutletz-common"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpclient/4.3.5/httpclient-4.3.5.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpcore/4.3.2/httpcore-4.3.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-codec/commons-codec/1.6/commons-codec-1.6.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/springframework/spring-core/4.0.3.RELEASE/spring-core-4.0.3.RELEASE.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/springframework/spring-context/4.0.3.RELEASE/spring-context-4.0.3.RELEASE.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/springframework/spring-aop/4.0.3.RELEASE/spring-aop-4.0.3.RELEASE.jar"/>
@@ -103,10 +106,6 @@
   <classpathentry kind="var" path="M2_REPO/org/springframework/plugin/spring-plugin-core/1.1.0.RELEASE/spring-plugin-core-1.1.0.RELEASE.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/atteo/evo-inflector/1.2/evo-inflector-1.2.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/hsqldb/hsqldb/2.3.1/hsqldb-2.3.1.jar"/>
-  <classpathentry kind="lib" path="/Users/rnagulapalle/.m2/maven.repo/com/eoutletz/exceptions/eoutletz-exceptions/1.0-SNAPSHOT/eoutletz-exceptions-1.0-SNAPSHOT.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpclient/4.3.5/httpclient-4.3.5.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpcore/4.3.2/httpcore-4.3.2.jar"/>
-  <classpathentry kind="var" path="M2_REPO/commons-codec/commons-codec/1.6/commons-codec-1.6.jar"/>
   <classpathentry kind="src" path="/eoutletz-services"/>
   <classpathentry kind="src" path="/eoutletz-exceptions"/>
   <classpathentry kind="var" path="M2_REPO/org/mockito/mockito-all/1.9.5/mockito-all-1.9.5.jar"/>

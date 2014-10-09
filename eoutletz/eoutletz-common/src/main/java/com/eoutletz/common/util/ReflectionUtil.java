@@ -3,13 +3,13 @@ package com.eoutletz.common.util;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.eoutletz.common.log.Logger;
+
 
 @SuppressWarnings("rawtypes")
 public class ReflectionUtil {
 
-    private static Logger logger = LoggerFactory.getLogger(ReflectionUtil.class);
+    private static Logger logger = Logger.getLogger(ReflectionUtil.class);
 
     /**
      * Get the class generic type by java reflect, which the generic type

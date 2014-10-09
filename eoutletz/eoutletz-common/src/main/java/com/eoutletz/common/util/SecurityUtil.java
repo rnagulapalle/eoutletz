@@ -11,9 +11,12 @@ import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.codec.binary.Hex;
 
 import com.eoutletz.common.constants.Constants;
+import com.eoutletz.common.log.Logger;
 
 public class SecurityUtil {
 
+	private static Logger logger = Logger.getLogger(SecurityUtil.class);
+	
 	public static String hmacSha1(String value, String key) {
         try {
             // Get an hmac_sha1 key from the raw key bytes
@@ -33,18 +36,26 @@ public class SecurityUtil {
             //  Covert array of Hex bytes to a String
             return new String(hexBytes, "UTF-8");
         } catch (Exception e) {
-            throw new RuntimeException(e);
+        	logger.error("Failed with", e);
+            throw new IllegalArgumentException(e.getMessage());
         }
     }
 	
-	public static void main(String args[]) throws ParseException{
-		//find user by email and password
-		String temp = "11111111";
-		String firstName = "venkanna";
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date date = format.parse("2014-10-08 19:01:33");
-		String temp2 = new SimpleDateFormat("yyyy-MM-dd HH").format(date);
-		String salt = firstName + temp2;
-		System.out.println(hmacSha1(salt + temp, Constants.HMAC_KEY));
+	public static String getHash(String firstname, Date date, String password){
+	
+		String temp = new SimpleDateFormat("yyyy-MM-dd HH").format(date);
+		String salt = firstname + temp;
+		return hmacSha1(salt + temp, Constants.HMAC_KEY);
 	}
+	
+//	public static void main(String args[]) throws ParseException{
+//		//find user by email and password
+//		String temp = "11111111";
+//		String firstName = "venkanna";
+//		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//		Date date = format.parse("2014-10-08 19:01:33");
+//		String temp2 = new SimpleDateFormat("yyyy-MM-dd HH").format(date);
+//		String salt = firstName + temp2;
+//		System.out.println(hmacSha1(salt + temp, Constants.HMAC_KEY));
+//	}
 }

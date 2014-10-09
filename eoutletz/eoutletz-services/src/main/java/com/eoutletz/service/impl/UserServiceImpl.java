@@ -53,8 +53,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User updateUser(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return userPersistService.updateUser(user);
 	}
 
 	@Override
@@ -70,8 +70,10 @@ public class UserServiceImpl implements UserService {
 			//user already exist with this email
 			throw new NoSuchResourceFoundException("No user found with email " + email);
 		}
-		//TODO: build password hash using salt and compare stored in db.
-		return null;
+		//build password hash using salt and compare stored in db.
+		String hahsedPwd = SecurityUtil.getHash(user.getFirstName(), user.getCreatedTime(), password);
+		
+		return userPersistService.findByPassword(hahsedPwd);
 	}
 
 }

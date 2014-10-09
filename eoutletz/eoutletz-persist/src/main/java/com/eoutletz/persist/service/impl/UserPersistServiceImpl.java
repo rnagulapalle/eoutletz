@@ -9,6 +9,13 @@ import com.eoutletz.persist.entity.User;
 import com.eoutletz.persist.repository.UserRepository;
 import com.eoutletz.persist.service.UserPersistService;
 
+/**
+ * TODO: improve SQL Exception handling for database transactions
+ * wrap SQL exception into custom exception and throw
+ * 
+ * @author rnagulapalle
+ *
+ */
 @Transactional
 @Service
 public class UserPersistServiceImpl implements UserPersistService {
@@ -37,6 +44,16 @@ public class UserPersistServiceImpl implements UserPersistService {
 			return;
 		}
 		userRepository.delete(user);
+	}
+
+	@Override
+	public User findByPassword(String password) {
+		return userRepository.findByPassword(password);
+	}
+
+	@Override
+	public User updateUser(User user) {
+		return userRepository.saveOrUpdate(user);
 	}
 
 }

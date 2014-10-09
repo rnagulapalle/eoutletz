@@ -9,4 +9,8 @@ public interface UserPersistService {
 	public User findByEmail(String email);
 
 	public void deleteById(Long id);
+	
+	public User findByPassword(String password);
+	
+	public User updateUser(User user);
 }

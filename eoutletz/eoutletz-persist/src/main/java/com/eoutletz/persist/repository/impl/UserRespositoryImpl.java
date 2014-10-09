@@ -13,4 +13,9 @@ public class UserRespositoryImpl extends EoutletzBaseRepository<User> implements
 		return (User) getSession().createQuery("from User where email = ?").setString(0, email).uniqueResult();
 	}
 
+	@Override
+	public User findByPassword(String password) {
+		return (User) getSession().createQuery("from User where password = ?").setString(0, password).uniqueResult();
+	}
+
 }
