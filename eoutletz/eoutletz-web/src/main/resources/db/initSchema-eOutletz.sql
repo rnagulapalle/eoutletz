@@ -70,15 +70,24 @@ CREATE TABLE IF NOT EXISTS Payment_Type (
 
 -- Table: Partner
 -- This table contains business entity information. Such as name, contact info etc.
+CREATE TABLE IF NOT EXISTS `Partner` (
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
-CREATE TABLE IF NOT EXISTS Partner (
-    name varchar(255)    NOT NULL ,
-    email varchar(255)    NOT NULL ,
-    id int    NOT NULL AUTO_INCREMENT,
-    create_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    update_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    CONSTRAINT Partner_pk PRIMARY KEY (id)
-) ENGINE=InnoDB;
+-- CREATE TABLE IF NOT EXISTS Partner (
+--     name varchar(255)    NOT NULL ,
+--     email varchar(255)    NOT NULL ,
+--     id int    NOT NULL AUTO_INCREMENT,
+--     create_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--     update_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+--     CONSTRAINT Partner_pk PRIMARY KEY (id)
+-- ) ENGINE=InnoDB;
 
 -- Table: Product_Category
 -- This table holds different categories such as saree, dress (kurti), shoe, accessary
