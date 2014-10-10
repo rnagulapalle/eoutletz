@@ -166,21 +166,39 @@ CREATE TABLE IF NOT EXISTS Order_Tracking (
 
 -- Table: Partner_Contact
 -- This table holds information about partner contact details such as physical address of business and office address
+CREATE TABLE IF NOT EXISTS `Partner_Contact` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `address1` varchar(255) NOT NULL,
+  `address2` varchar(255) DEFAULT NULL,
+  `city` varchar(255) NOT NULL,
+  `state` varchar(255) NOT NULL,
+  `country` varchar(255) NOT NULL,
+  `type_id` int(11) NOT NULL,
+  `partner_id` int(11) NOT NULL,
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `postal_code` varchar(25) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `Partner_Contact_Partner` (`partner_id`),
+  KEY `Partner_Contact_Address_Type` (`type_id`),
+  CONSTRAINT `Partner_Contact_Address_Type` FOREIGN KEY (`type_id`) REFERENCES `Address_Type` (`id`),
+  CONSTRAINT `Partner_Contact_Partner` FOREIGN KEY (`partner_id`) REFERENCES `Partner` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
-CREATE TABLE IF NOT EXISTS Partner_Contact (
-    id int    NOT NULL AUTO_INCREMENT,
-    address1 varchar(255)    NOT NULL ,
-    address2 varchar(255)    NULL ,
-    city varchar(255)    NOT NULL ,
-    state varchar(255)    NOT NULL ,
-    country varchar(255)    NOT NULL ,
-    type_id int    NOT NULL ,
-    partner_id int    NOT NULL ,
-    create_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    update_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    CONSTRAINT Partner_Contact_pk PRIMARY KEY (id),
-    CONSTRAINT Partner_Contact_Partner FOREIGN KEY Partner_Contact_Partner (partner_id) REFERENCES Partner (id) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE=InnoDB;
+-- CREATE TABLE IF NOT EXISTS Partner_Contact (
+--     id int    NOT NULL AUTO_INCREMENT,
+--     address1 varchar(255)    NOT NULL ,
+--     address2 varchar(255)    NULL ,
+--     city varchar(255)    NOT NULL ,
+--     state varchar(255)    NOT NULL ,
+--     country varchar(255)    NOT NULL ,
+--     type_id int    NOT NULL ,
+--     partner_id int    NOT NULL ,
+--     create_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--     update_date DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+--     CONSTRAINT Partner_Contact_pk PRIMARY KEY (id),
+--     CONSTRAINT Partner_Contact_Partner FOREIGN KEY Partner_Contact_Partner (partner_id) REFERENCES Partner (id) ON DELETE RESTRICT ON UPDATE RESTRICT
+-- ) ENGINE=InnoDB;
 
 -- Table: Phone
 -- holds type of phone primary , secondary etc
@@ -276,8 +294,8 @@ CREATE TABLE IF NOT EXISTS Product_Size (
 -- Reference:  Partner_Contact_Partner (table: Partner_Contact)
 
 
--- ALTER TABLE Partner_Contact ADD CONSTRAINT Partner_Contact_Partner FOREIGN KEY Partner_Contact_Partner (partner_id)
---     REFERENCES Partner (id)
+-- ALTER TABLE Partner_Contact ADD CONSTRAINT Partner_Contact_Address_Type FOREIGN KEY Partner_Contact_Address_Type (type_id)
+--     REFERENCES Address_Type (id)
 --     ON DELETE RESTRICT
 --     ON UPDATE RESTRICT;
 -- Reference:  Phone_User (table: Phone)
