@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS Address (
 -- Table: Color
 CREATE TABLE IF NOT EXISTS Color (
     id int    NOT NULL AUTO_INCREMENT ,
-    color int    NOT NULL ,
+    color varchar(25)    NOT NULL ,
     CONSTRAINT Color_pk PRIMARY KEY (id)
 ) ENGINE=InnoDB;
 
