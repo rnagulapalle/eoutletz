@@ -59,6 +59,12 @@ public class Product extends IdEntity<Product> {
 	private Double unitPrice;
 	
 	private Set<Category> categories = new HashSet<Category>(0);
+	
+	private Set<Color> colors = new HashSet<Color>(0);
+	
+	private Set<Size> size = new HashSet<Size>(0);
+	
+	private Set<Order> orders = new HashSet<Order>(0);
 
 	public String getName() {
 		return name;
@@ -149,7 +155,7 @@ public class Product extends IdEntity<Product> {
 	}
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "stock_category", joinColumns = { 
+	@JoinTable(name = "Product_Category", joinColumns = { 
 			@JoinColumn(name = "product_id", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "category_id", 
 					nullable = false, updatable = false) })
@@ -159,6 +165,45 @@ public class Product extends IdEntity<Product> {
 
 	public void setCategories(Set<Category> categories) {
 		this.categories = categories;
+	}
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "Product_Color", joinColumns = { 
+			@JoinColumn(name = "product_id", nullable = false, updatable = false) }, 
+			inverseJoinColumns = { @JoinColumn(name = "color_id", 
+					nullable = false, updatable = false) })
+	public Set<Color> getColors() {
+		return colors;
+	}
+
+	public void setColors(Set<Color> colors) {
+		this.colors = colors;
+	}
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "Product_Size", joinColumns = { 
+			@JoinColumn(name = "product_id", nullable = false, updatable = false) }, 
+			inverseJoinColumns = { @JoinColumn(name = "size_id", 
+					nullable = false, updatable = false) })
+	public Set<Size> getSize() {
+		return size;
+	}
+
+	public void setSize(Set<Size> size) {
+		this.size = size;
+	}
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "Product_Order", joinColumns = { 
+			@JoinColumn(name = "product_id", nullable = false, updatable = false) }, 
+			inverseJoinColumns = { @JoinColumn(name = "order_id", 
+					nullable = false, updatable = false) })
+	public Set<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
 	}
 	
 }

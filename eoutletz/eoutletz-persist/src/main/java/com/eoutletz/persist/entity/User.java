@@ -1,7 +1,12 @@
 package com.eoutletz.persist.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
@@ -33,6 +38,10 @@ public class User extends IdEntity<User>{
 	@Type(type = "org.hibernate.type.YesNoType")
 	private boolean merchant;
 	
+	private Set<Address> address = new HashSet<Address>(0);
+	
+	private Set<Order> orders = new HashSet<Order>(0);
+	
 	public boolean isMerchant() {
 		return merchant;
 	}
@@ -62,5 +71,21 @@ public class User extends IdEntity<User>{
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	public Set<Address> getAddress() {
+		return address;
+	}
+	public void setAddress(Set<Address> address) {
+		this.address = address;
+	}
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	public Set<Order> getOrders() {
+		return orders;
+	}
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
 	}
 }
