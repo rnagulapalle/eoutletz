@@ -1,0 +1,1 @@
+export JAVA_OPTS="-XX:MaxPermSize=512m -XX:PermSize=512m -Xms2048m -Xmx2048m -XX:+UseConcMarkSweepGC -XX:+CMSPermGenSweepingEnabled -XX:+CMSClassUnloadingEnabled -Dlog.path=/Users/rnagulapalle/work/log" 
