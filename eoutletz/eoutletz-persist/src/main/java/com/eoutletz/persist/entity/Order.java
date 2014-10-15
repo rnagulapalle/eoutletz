@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -34,6 +35,7 @@ public class Order extends IdEntity<Order> {
 	@JoinColumn(name = "payment_type_id")
 	private PaymentType paymentType;
 	
+	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "orders")
 	private Set<Product> products = new HashSet<Product>(0);
 
 	public User getUser() {
@@ -52,7 +54,6 @@ public class Order extends IdEntity<Order> {
 		this.address = address;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "orders")
 	public Set<Product> getProducts() {
 		return products;
 	}

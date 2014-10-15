@@ -11,7 +11,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.eoutletz.persist.db.IdEntity;
 
@@ -35,10 +40,7 @@ public class Product extends IdEntity<Product> {
 	
 	@Column(name = "description", nullable = false)
 	private String decription;
-	
-	@Column(name = "image", nullable = false)
-	private String image;
-	
+
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "partner_id")
 	private Partner partner;
@@ -58,13 +60,40 @@ public class Product extends IdEntity<Product> {
 	@Column(name = "unit_price", nullable = false)
 	private Double unitPrice;
 	
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "Product_Category", joinColumns = { 
+			@JoinColumn(name = "product_id", nullable = false, updatable = false) }, 
+			inverseJoinColumns = { @JoinColumn(name = "category_id", 
+					nullable = false, updatable = false) })
 	private Set<Category> categories = new HashSet<Category>(0);
 	
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "Product_Color", joinColumns = { 
+			@JoinColumn(name = "product_id", nullable = false, updatable = false) }, 
+			inverseJoinColumns = { @JoinColumn(name = "color_id", 
+					nullable = false, updatable = false) })
 	private Set<Color> colors = new HashSet<Color>(0);
 	
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "Product_Size", joinColumns = { 
+			@JoinColumn(name = "product_id", nullable = false, updatable = false) }, 
+			inverseJoinColumns = { @JoinColumn(name = "size_id", 
+					nullable = false, updatable = false) })
 	private Set<Size> size = new HashSet<Size>(0);
 	
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "Product_Order", joinColumns = { 
+			@JoinColumn(name = "product_id", nullable = false, updatable = false) }, 
+			inverseJoinColumns = { @JoinColumn(name = "order_id", 
+					nullable = false, updatable = false) })
 	private Set<Order> orders = new HashSet<Order>(0);
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+	@Cascade(org.hibernate.annotations.CascadeType.ALL)
+	@Fetch(FetchMode.JOIN)
+	private Set<Image> images = new HashSet<Image>(0);
 
 	public String getName() {
 		return name;
@@ -96,14 +125,6 @@ public class Product extends IdEntity<Product> {
 
 	public void setDecription(String decription) {
 		this.decription = decription;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
 	}
 
 	public Partner getPartner() {
@@ -154,11 +175,6 @@ public class Product extends IdEntity<Product> {
 		this.unitPrice = unitPrice;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "Product_Category", joinColumns = { 
-			@JoinColumn(name = "product_id", nullable = false, updatable = false) }, 
-			inverseJoinColumns = { @JoinColumn(name = "category_id", 
-					nullable = false, updatable = false) })
 	public Set<Category> getCategories() {
 		return categories;
 	}
@@ -166,12 +182,7 @@ public class Product extends IdEntity<Product> {
 	public void setCategories(Set<Category> categories) {
 		this.categories = categories;
 	}
-
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "Product_Color", joinColumns = { 
-			@JoinColumn(name = "product_id", nullable = false, updatable = false) }, 
-			inverseJoinColumns = { @JoinColumn(name = "color_id", 
-					nullable = false, updatable = false) })
+	
 	public Set<Color> getColors() {
 		return colors;
 	}
@@ -179,12 +190,7 @@ public class Product extends IdEntity<Product> {
 	public void setColors(Set<Color> colors) {
 		this.colors = colors;
 	}
-
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "Product_Size", joinColumns = { 
-			@JoinColumn(name = "product_id", nullable = false, updatable = false) }, 
-			inverseJoinColumns = { @JoinColumn(name = "size_id", 
-					nullable = false, updatable = false) })
+	
 	public Set<Size> getSize() {
 		return size;
 	}
@@ -193,17 +199,20 @@ public class Product extends IdEntity<Product> {
 		this.size = size;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "Product_Order", joinColumns = { 
-			@JoinColumn(name = "product_id", nullable = false, updatable = false) }, 
-			inverseJoinColumns = { @JoinColumn(name = "order_id", 
-					nullable = false, updatable = false) })
 	public Set<Order> getOrders() {
 		return orders;
 	}
 
 	public void setOrders(Set<Order> orders) {
 		this.orders = orders;
+	}
+
+	public Set<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(Set<Image> images) {
+		this.images = images;
 	}
 	
 }

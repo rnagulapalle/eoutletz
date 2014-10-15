@@ -3,6 +3,7 @@ package com.eoutletz.persist.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,6 +24,7 @@ public class PaymentType extends IdEntity<PaymentType> {
 	@Column(name = "type", nullable = false)
 	private String type;
 	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "paymentType")
 	private Set<Order> orders = new HashSet<Order>(0);
 
 	public String getType() {
@@ -33,7 +35,6 @@ public class PaymentType extends IdEntity<PaymentType> {
 		this.type = type;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "paymentType")
 	public Set<Order> getOrders() {
 		return orders;
 	}

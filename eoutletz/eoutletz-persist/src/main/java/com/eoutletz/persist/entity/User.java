@@ -3,6 +3,7 @@ package com.eoutletz.persist.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -38,8 +39,10 @@ public class User extends IdEntity<User>{
 	@Type(type = "org.hibernate.type.YesNoType")
 	private boolean merchant;
 	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
 	private Set<Address> address = new HashSet<Address>(0);
 	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
 	private Set<Order> orders = new HashSet<Order>(0);
 	
 	public boolean isMerchant() {
@@ -73,7 +76,6 @@ public class User extends IdEntity<User>{
 		this.password = password;
 	}
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
 	public Set<Address> getAddress() {
 		return address;
 	}
@@ -81,7 +83,6 @@ public class User extends IdEntity<User>{
 		this.address = address;
 	}
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
 	public Set<Order> getOrders() {
 		return orders;
 	}

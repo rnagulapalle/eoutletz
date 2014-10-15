@@ -45,6 +45,7 @@ public class Address extends IdEntity<Address> {
 	@JoinColumn(name = "user_id")
 	private User user;
 	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "address")
 	private Set<Order> orders = new HashSet<Order>(0);
 
 	public String getAddress1() {
@@ -103,7 +104,6 @@ public class Address extends IdEntity<Address> {
 		this.user = user;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "address")
 	public Set<Order> getOrders() {
 		return orders;
 	}

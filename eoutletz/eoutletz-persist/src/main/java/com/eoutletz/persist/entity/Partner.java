@@ -3,6 +3,7 @@ package com.eoutletz.persist.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,8 +27,10 @@ public class Partner extends IdEntity<Partner> {
 	@Column(name = "name")
 	private String name;
 	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "partner")
 	private Set<PartnerContact> partnerContacts = new HashSet<PartnerContact>(0);
 	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "partner")
 	private Set<Product> products = new HashSet<Product>(0);
 		
 	public String getEmail() {
@@ -43,7 +46,6 @@ public class Partner extends IdEntity<Partner> {
 		this.name = name;
 	}
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
 	public Set<PartnerContact> getPartnerContacts() {
 		return partnerContacts;
 	}
@@ -51,7 +53,6 @@ public class Partner extends IdEntity<Partner> {
 		this.partnerContacts = partnerContacts;
 	}
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
 	public Set<Product> getProducts() {
 		return products;
 	}

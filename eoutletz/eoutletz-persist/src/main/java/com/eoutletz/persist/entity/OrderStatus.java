@@ -3,6 +3,7 @@ package com.eoutletz.persist.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,9 +23,9 @@ public class OrderStatus extends IdEntity<OrderStatus> {
 	@Column(name = "status", nullable = false)
 	private Integer status;
 	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "orderStatus")
 	private Set<OrderTracking> orderTrackings = new HashSet<OrderTracking>(0);
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "orderStatus")
+	
 	public Set<OrderTracking> getOrderTrackings() {
 		return orderTrackings;
 	}

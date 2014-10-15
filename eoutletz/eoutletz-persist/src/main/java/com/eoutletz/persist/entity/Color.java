@@ -3,6 +3,7 @@ package com.eoutletz.persist.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,6 +23,7 @@ public class Color extends IdEntity<Color> {
 	@Column(name = "color", nullable = false)
 	private String color;
 	
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "colors")
 	private Set<Product> products = new HashSet<Product>(0);
 
 	public String getColor() {
@@ -32,7 +34,6 @@ public class Color extends IdEntity<Color> {
 		this.color = color;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "colors")
 	public Set<Product> getProducts() {
 		return products;
 	}
