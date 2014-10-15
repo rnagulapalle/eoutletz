@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.eoutletz.common.constants.Constants.ProductType;
 import com.eoutletz.common.log.Logger;
 import com.eoutletz.persist.entity.Image;
 import com.eoutletz.persist.entity.Product;
@@ -35,19 +34,36 @@ public class ProductController extends BaseController{
 	@Autowired
 	private ProductService productService;
 	
-	@RequestMapping(value = "/product/all/{start}/{end}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ProductResponse> getUser(@PathVariable("start")  int start,  @PathVariable("end") int end) {
+	@RequestMapping(value = "/products/{type}/{limit}/", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ProductResponse> getUser(@PathVariable("type")  int type, @PathVariable("limit")  int limit) {
 		
 		logger.info("....get product has been called..");
-		//TODO: get products by limit
-		List<Product> products = productService.getLatestProducts(start, end);
-		if(products == null) throw new NoSuchResourceFoundException("No resources found");
+		//check type and limit values
+		
+		ProductType productType = ProductType.values()[type];
+		List<Product> products = null;
+		
+		switch(productType){
+		
+		case NEW:
+			products = productService.getLatestProducts(limit);
+			break;
+		
+		default:
+			throw new NoSuchResourceFoundException("no such resource found with type " + type);
+		}
+		
+		if(products == null) throw new NoSuchResourceFoundException("No products found");
+		
 		BaseResponseResource baseResponse = new BaseResponseResource(HttpStatus.OK.value(), "Successfully fetched products");
 		ProductResponse response = new ProductResponse();
+		
 		Data data = new Data();
 		data.setResponse(baseResponse);
+		
 		List<ProductJson> productJsons = new ArrayList<>();
 		
+		//TODO: this loop needs to be optimize as it takes O(NxM) time
 		for(Product product :  products){
 			
 			ProductJson productJson = new ProductJson();

@@ -36,7 +36,7 @@ public class UserController extends BaseController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value = "/user/", method = RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/users/", method = RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<BaseResponseResource> createUser(@Valid @RequestBody final CreateUserRequest createUserRequest, BindingResult result, Errors errors) {
 		
 		logger.info("....create user has been called..");
@@ -58,7 +58,7 @@ public class UserController extends BaseController {
 		return new ResponseEntity<>(response, headers, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/user/{email}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/users/{email}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<UserResponse> getUser(@PathVariable("email") String email) {
 		
 		logger.info("....get user has been called..");
@@ -83,7 +83,7 @@ public class UserController extends BaseController {
 		return new ResponseEntity<>(response, headers, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/user/", method = RequestMethod.PUT, produces=MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/users/", method = RequestMethod.PUT, produces=MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<BaseResponseResource> updateUser(@Valid @RequestBody final CreateUserRequest createUserRequest, BindingResult result, Errors errors) {
 
 		//TODO: update user functionality
@@ -94,7 +94,7 @@ public class UserController extends BaseController {
 		return new ResponseEntity<>(response, headers, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/user/login/", method = RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/users/login/", method = RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<BaseResponseResource> loginUser(@Valid @RequestBody final UserLoginRequest userLoginRequest, BindingResult result, Errors errors) {
 		
 		logger.info("....login user has been called..");

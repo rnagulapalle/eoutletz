@@ -12,9 +12,9 @@ public class ProductRepositoryImpl extends EoutletzBaseRepository<Product> imple
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T> List<T> getLatestProducts(int start, int end) {
+	public <T> List<T> getLatestProducts(int limit) {
 		
-		List<Product> products = getSession().createQuery("from Product order by createdTime desc").setFirstResult(start).setMaxResults(end).list();
+		List<Product> products = getSession().createQuery("from Product order by createdTime desc").setMaxResults(limit).list();
 
         if (products != null && !products.isEmpty()) {
             return (List<T>) products;

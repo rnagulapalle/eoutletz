@@ -16,8 +16,8 @@ public class ProductServiceImpl implements ProductService {
 	private ProductPersistService productPersistService;
 	
 	@Override
-	public List<Product> getLatestProducts(int start, int end) {
-		return productPersistService.getLatestProducts(start , end);
+	public List<Product> getLatestProducts(int limit) {
+		return productPersistService.getLatestProducts(limit);
 	}
 
 }
