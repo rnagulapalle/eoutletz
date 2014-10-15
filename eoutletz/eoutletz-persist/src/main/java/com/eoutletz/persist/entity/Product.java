@@ -1,7 +1,6 @@
 package com.eoutletz.persist.entity;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,7 +21,6 @@ import org.hibernate.annotations.FetchMode;
 
 import com.eoutletz.persist.db.IdEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sun.org.apache.xerces.internal.impl.dv.xs.DecimalDV;
 
 @Entity
 @Table(name = "Product")
