@@ -66,7 +66,7 @@ public class UserController extends BaseController {
 		
 		User user = userService.getUser(email);
 		if(user == null) throw new NoSuchResourceFoundException("No user found with email " + email);
-		BaseResponseResource baseResponse = new BaseResponseResource(HttpStatus.OK.value(), "Successfully created account");
+		BaseResponseResource baseResponse = new BaseResponseResource(HttpStatus.OK.value(), "Successfully fetched user profile");
 		UserResponse response = new UserResponse();
 		
 		Data data = new Data();

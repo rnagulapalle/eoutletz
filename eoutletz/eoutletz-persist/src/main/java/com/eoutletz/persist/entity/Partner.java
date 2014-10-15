@@ -29,7 +29,7 @@ public class Partner extends IdEntity<Partner> {
 	@Column(name = "name")
 	private String name;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "partner")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "partner")
 	private Set<PartnerContact> partnerContacts = new HashSet<PartnerContact>(0);
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "partner")

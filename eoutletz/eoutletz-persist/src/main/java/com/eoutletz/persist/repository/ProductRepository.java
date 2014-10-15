@@ -8,5 +8,5 @@ import com.eoutletz.persist.entity.Product;
 
 public interface ProductRepository extends Repository<Product> {
 
-	public <T> List<T> getLatestProducts();
+	public <T> List<T> getLatestProducts(int start, int end);
 }

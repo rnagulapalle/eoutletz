@@ -10,7 +10,7 @@ public interface ProductPersistService {
 
 	public List<Product> findByCategory(String email);
 	
-	public List<Product> getLatestProducts();
+	public List<Product> getLatestProducts(int start, int end);
 
 	public void deleteById(Long id);
 }

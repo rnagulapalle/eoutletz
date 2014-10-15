@@ -3,6 +3,7 @@ package com.eoutletz.persist.entity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -24,7 +25,7 @@ public class Image extends IdEntity<Image> {
 	@Column(name = "image", nullable = false)
 	private String image;
 
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "prod_id")
 	private Product product;
 

@@ -6,5 +6,5 @@ import com.eoutletz.persist.entity.Product;
 
 public interface ProductService {
 
-	public List<Product> getLatestProducts();
+	public List<Product> getLatestProducts(int start, int end);
 }

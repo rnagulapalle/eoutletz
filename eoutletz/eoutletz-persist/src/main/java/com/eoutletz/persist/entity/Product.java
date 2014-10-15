@@ -68,7 +68,6 @@ public class Product extends IdEntity<Product> {
 			@JoinColumn(name = "product_id", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "category_id", 
 					nullable = false, updatable = false) })
-	@Fetch(FetchMode.JOIN)
 	private Set<Category> categories = new HashSet<Category>(0);
 	
 
@@ -77,7 +76,6 @@ public class Product extends IdEntity<Product> {
 			@JoinColumn(name = "product_id", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "color_id", 
 					nullable = false, updatable = false) })
-	@Fetch(FetchMode.JOIN)
 	private Set<Color> colors = new HashSet<Color>(0);
 	
 
@@ -86,20 +84,17 @@ public class Product extends IdEntity<Product> {
 			@JoinColumn(name = "product_id", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "size_id", 
 					nullable = false, updatable = false) })
-	@Fetch(FetchMode.JOIN)
 	private Set<Size> size = new HashSet<Size>(0);
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "Product_Order", joinColumns = { 
 			@JoinColumn(name = "product_id", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "order_id", 
-					nullable = false, updatable = false) })
-	@Fetch(FetchMode.JOIN)
+					nullable = false, updatable = false) })	
 	private Set<Order> orders = new HashSet<Order>(0);
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
 	@Cascade(org.hibernate.annotations.CascadeType.ALL)
-	@Fetch(FetchMode.JOIN)
 	private Set<Image> images = new HashSet<Image>(0);
 
 	public String getName() {

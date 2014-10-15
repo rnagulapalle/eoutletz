@@ -34,9 +34,9 @@ public class ProductPersistServiceImpl implements ProductPersistService {
 	}
 
 	@Override
-	public List<Product> getLatestProducts() {
+	public List<Product> getLatestProducts(int start, int end) {
 		logger.info("fetching latest products by date");
-		return productRepository.getLatestProducts();
+		return productRepository.getLatestProducts(start, end);
 	}
 
 	@Override
