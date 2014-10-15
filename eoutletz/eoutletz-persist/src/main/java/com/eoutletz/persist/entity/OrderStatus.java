@@ -11,9 +11,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.eoutletz.persist.db.IdEntity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "Order_Status")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class OrderStatus extends IdEntity<OrderStatus> {
 
 	/**
@@ -21,7 +23,7 @@ public class OrderStatus extends IdEntity<OrderStatus> {
 	 */
 	private static final long serialVersionUID = -4390919623174919126L;
 	@Column(name = "status", nullable = false)
-	private Integer status;
+	private Long status;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "orderStatus")
 	private Set<OrderTracking> orderTrackings = new HashSet<OrderTracking>(0);
@@ -34,11 +36,13 @@ public class OrderStatus extends IdEntity<OrderStatus> {
 		this.orderTrackings = orderTrackings;
 	}
 
-	public Integer getStatus() {
+	public Long getStatus() {
 		return status;
 	}
 
-	public void setStatus(Integer status) {
+	public void setStatus(Long status) {
 		this.status = status;
 	}
+	
+	
 }

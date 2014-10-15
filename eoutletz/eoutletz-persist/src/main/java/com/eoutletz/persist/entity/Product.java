@@ -1,5 +1,7 @@
 package com.eoutletz.persist.entity;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,9 +21,12 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import com.eoutletz.persist.db.IdEntity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sun.org.apache.xerces.internal.impl.dv.xs.DecimalDV;
 
 @Entity
 @Table(name = "Product")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Product extends IdEntity<Product> {
 
 	/**
@@ -36,7 +41,7 @@ public class Product extends IdEntity<Product> {
 	private String sku;
 	
 	@Column(name = "price", nullable = false)
-	private Double price;
+	private BigDecimal price;
 	
 	@Column(name = "description", nullable = false)
 	private String decription;
@@ -46,25 +51,26 @@ public class Product extends IdEntity<Product> {
 	private Partner partner;
 	
 	@Column(name = "quantity", nullable = false)
-	private Integer quantity;
+	private Long quantity;
 	
 	@Column(name = "msrp", nullable = false)
-	private Double msrp;
+	private BigDecimal msrp;
 	
 	@Column(name = "units_in_stock", nullable = false)
-	private Integer unitsInStock;
+	private Long unitsInStock;
 	
-	@Column(name = "unitsInOrder", nullable = false)
-	private Integer unitsInOrder;
+	@Column(name = "units_in_order", nullable = false)
+	private Long unitsInOrder;
 	
 	@Column(name = "unit_price", nullable = false)
-	private Double unitPrice;
+	private BigDecimal unitPrice;
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "Product_Category", joinColumns = { 
 			@JoinColumn(name = "product_id", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "category_id", 
 					nullable = false, updatable = false) })
+	@Fetch(FetchMode.JOIN)
 	private Set<Category> categories = new HashSet<Category>(0);
 	
 
@@ -73,6 +79,7 @@ public class Product extends IdEntity<Product> {
 			@JoinColumn(name = "product_id", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "color_id", 
 					nullable = false, updatable = false) })
+	@Fetch(FetchMode.JOIN)
 	private Set<Color> colors = new HashSet<Color>(0);
 	
 
@@ -81,6 +88,7 @@ public class Product extends IdEntity<Product> {
 			@JoinColumn(name = "product_id", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "size_id", 
 					nullable = false, updatable = false) })
+	@Fetch(FetchMode.JOIN)
 	private Set<Size> size = new HashSet<Size>(0);
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -88,6 +96,7 @@ public class Product extends IdEntity<Product> {
 			@JoinColumn(name = "product_id", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "order_id", 
 					nullable = false, updatable = false) })
+	@Fetch(FetchMode.JOIN)
 	private Set<Order> orders = new HashSet<Order>(0);
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
@@ -111,11 +120,11 @@ public class Product extends IdEntity<Product> {
 		this.sku = sku;
 	}
 
-	public Double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 
@@ -135,43 +144,43 @@ public class Product extends IdEntity<Product> {
 		this.partner = partner;
 	}
 
-	public Integer getQuantity() {
+	public Long getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(Integer quantity) {
+	public void setQuantity(Long quantity) {
 		this.quantity = quantity;
 	}
 
-	public Double getMsrp() {
+	public BigDecimal getMsrp() {
 		return msrp;
 	}
 
-	public void setMsrp(Double msrp) {
+	public void setMsrp(BigDecimal msrp) {
 		this.msrp = msrp;
 	}
 
-	public Integer getUnitsInStock() {
+	public Long getUnitsInStock() {
 		return unitsInStock;
 	}
 
-	public void setUnitsInStock(Integer unitsInStock) {
+	public void setUnitsInStock(Long unitsInStock) {
 		this.unitsInStock = unitsInStock;
 	}
 
-	public Integer getUnitsInOrder() {
+	public Long getUnitsInOrder() {
 		return unitsInOrder;
 	}
 
-	public void setUnitsInOrder(Integer unitsInOrder) {
+	public void setUnitsInOrder(Long unitsInOrder) {
 		this.unitsInOrder = unitsInOrder;
 	}
 
-	public Double getUnitPrice() {
+	public BigDecimal getUnitPrice() {
 		return unitPrice;
 	}
 
-	public void setUnitPrice(Double unitPrice) {
+	public void setUnitPrice(BigDecimal unitPrice) {
 		this.unitPrice = unitPrice;
 	}
 
@@ -214,5 +223,6 @@ public class Product extends IdEntity<Product> {
 	public void setImages(Set<Image> images) {
 		this.images = images;
 	}
+	
 	
 }

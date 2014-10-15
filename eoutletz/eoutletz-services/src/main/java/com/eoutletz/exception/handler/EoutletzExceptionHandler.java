@@ -9,12 +9,12 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.eoutletz.common.log.Logger;
-import com.eoutletz.common.rest.response.ErrorResponseResource;
 import com.eoutletz.rest.exceptions.BaseRestException;
 import com.eoutletz.rest.exceptions.ForbiddenException;
 import com.eoutletz.rest.exceptions.InvalidArgumentException;
 import com.eoutletz.rest.exceptions.NoSuchResourceFoundException;
 import com.eoutletz.rest.exceptions.UserCreationFailedException;
+import com.eoutletz.service.rest.response.ErrorResponseResource;
 @ControllerAdvice
 public class EoutletzExceptionHandler extends ResponseEntityExceptionHandler{
 	

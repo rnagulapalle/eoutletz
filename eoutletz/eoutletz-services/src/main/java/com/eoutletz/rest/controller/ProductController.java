@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.eoutletz.common.log.Logger;
-import com.eoutletz.common.rest.response.BaseResponseResource;
-import com.eoutletz.common.rest.response.ProductResponse;
-import com.eoutletz.common.rest.response.ProductResponse.Data;
 import com.eoutletz.persist.entity.Product;
 import com.eoutletz.rest.exceptions.NoSuchResourceFoundException;
 import com.eoutletz.service.ProductService;
+import com.eoutletz.service.rest.response.BaseResponseResource;
+import com.eoutletz.service.rest.response.ProductResponse;
+import com.eoutletz.service.rest.response.ProductResponse.Data;
 
 @Controller
 @RequestMapping("/api/rest/v1")

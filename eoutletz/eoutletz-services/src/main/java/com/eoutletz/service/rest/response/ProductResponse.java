@@ -1,4 +1,4 @@
-package com.eoutletz.common.rest.response;
+package com.eoutletz.service.rest.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -27,6 +27,7 @@ public class ProductResponse {
 			this.name = name;
 		}
 	}
+	
 	public Data getData() {
 		return data;
 	}

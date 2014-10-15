@@ -11,9 +11,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.eoutletz.persist.db.IdEntity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "Partner")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Partner extends IdEntity<Partner> {
 
 	/**
@@ -60,4 +62,6 @@ public class Partner extends IdEntity<Partner> {
 	public void setProducts(Set<Product> products) {
 		this.products = products;
 	}
+	
+	
 }

@@ -13,9 +13,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.eoutletz.persist.db.IdEntity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "Address")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Address extends IdEntity<Address> {
 
 	/**
@@ -44,7 +46,7 @@ public class Address extends IdEntity<Address> {
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "user_id")
 	private User user;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "address")
 	private Set<Order> orders = new HashSet<Order>(0);
 

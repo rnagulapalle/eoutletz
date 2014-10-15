@@ -8,10 +8,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.eoutletz.persist.db.IdEntity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
 @Table(name = "Image")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Image extends IdEntity<Image> {
 
 	/**
@@ -41,4 +43,6 @@ public class Image extends IdEntity<Image> {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+	
+	
 }

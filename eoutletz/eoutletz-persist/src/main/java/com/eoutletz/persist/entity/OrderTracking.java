@@ -9,10 +9,12 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 import com.eoutletz.persist.db.IdEntity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "Order_Tracking",
 uniqueConstraints = { @UniqueConstraint(columnNames = { "tracking_number", "order_id", "order_status_id" }) })
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class OrderTracking extends IdEntity<OrderTracking> {
 
 	/**
@@ -65,4 +67,6 @@ public class OrderTracking extends IdEntity<OrderTracking> {
 	public void setOrderStatus(OrderStatus orderStatus) {
 		this.orderStatus = orderStatus;
 	}
+	
+	
 }

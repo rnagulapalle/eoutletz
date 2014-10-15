@@ -15,17 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.eoutletz.common.log.Logger;
-import com.eoutletz.common.rest.request.CreateUserRequest;
-import com.eoutletz.common.rest.request.UserLoginRequest;
-import com.eoutletz.common.rest.response.BaseResponseResource;
-import com.eoutletz.common.rest.response.UserResponse;
-import com.eoutletz.common.rest.response.UserResponse.Data;
 import com.eoutletz.persist.entity.User;
 import com.eoutletz.rest.exceptions.ForbiddenException;
 import com.eoutletz.rest.exceptions.InvalidArgumentException;
 import com.eoutletz.rest.exceptions.NoSuchResourceFoundException;
 import com.eoutletz.rest.exceptions.UserCreationFailedException;
 import com.eoutletz.service.UserService;
+import com.eoutletz.service.rest.request.CreateUserRequest;
+import com.eoutletz.service.rest.request.UserLoginRequest;
+import com.eoutletz.service.rest.response.BaseResponseResource;
+import com.eoutletz.service.rest.response.UserResponse;
+import com.eoutletz.service.rest.response.UserResponse.Data;
 
 @Controller
 @RequestMapping("/api/rest/v1")
@@ -71,6 +71,7 @@ public class UserController extends BaseController {
 		
 		Data data = new Data();
 		data.setResponse(baseResponse);
+		
 		data.setFirstname(user.getFirstName());
 		data.setLastname(user.getLastName());
 		data.setEmail(user.getEmail());
@@ -78,7 +79,7 @@ public class UserController extends BaseController {
 		
 		org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
 		headers.setContentType(org.springframework.http.MediaType.APPLICATION_JSON);
-
+		
 		return new ResponseEntity<>(response, headers, HttpStatus.OK);
 	}
 	

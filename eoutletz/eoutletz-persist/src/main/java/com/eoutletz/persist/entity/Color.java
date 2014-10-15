@@ -11,9 +11,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.eoutletz.persist.db.IdEntity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "Color")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Color extends IdEntity<Color> {
 
 	/**
@@ -41,4 +43,5 @@ public class Color extends IdEntity<Color> {
 	public void setProducts(Set<Product> products) {
 		this.products = products;
 	}
+	
 }

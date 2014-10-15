@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.eoutletz.common.log.Logger;
-import com.eoutletz.common.rest.response.BaseResponseResource;
 import com.eoutletz.rest.exceptions.InvalidArgumentException;
 import com.eoutletz.service.EchoService;
+import com.eoutletz.service.rest.response.BaseResponseResource;
 
 @Controller
 @RequestMapping("/api/rest/v1")

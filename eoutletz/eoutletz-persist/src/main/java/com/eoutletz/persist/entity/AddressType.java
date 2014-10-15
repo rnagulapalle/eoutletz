@@ -5,9 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import com.eoutletz.persist.db.IdEntity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "Address_Type")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AddressType extends IdEntity<AddressType> {
 	
 	/**
@@ -25,4 +27,6 @@ public class AddressType extends IdEntity<AddressType> {
 	public void setType(String type) {
 		this.type = type;
 	}
+	
+	
 }

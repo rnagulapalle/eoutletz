@@ -1,21 +1,18 @@
-package com.eoutletz.common.rest.response;
+package com.eoutletz.service.rest.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ErrorResponseResource {
-   
+public class BaseResponseResource {
+
 	private int code;
-    private String message;
+    private String message; 
+    public BaseResponseResource(){}
     
-
-    public ErrorResponseResource() { }
-
-    public ErrorResponseResource(int code, String message) {
-        this.code = code;
-        this.message = message;
+    public BaseResponseResource(int code, String message){
+    	this.code = code;
+    	this.message = message;
     }
-
     public int getCode() { return code; }
 
     public void setCode(int code) { this.code = code; }
@@ -23,5 +20,4 @@ public class ErrorResponseResource {
     public String getMessage() { return message; }
 
     public void setMessage(String message) { this.message = message; }
-
 }

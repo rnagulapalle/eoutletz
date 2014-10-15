@@ -13,9 +13,11 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Type;
 
 import com.eoutletz.persist.db.IdEntity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "User")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User extends IdEntity<User>{
 
 	/**
@@ -39,7 +41,7 @@ public class User extends IdEntity<User>{
 	@Type(type = "org.hibernate.type.YesNoType")
 	private boolean merchant;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
 	private Set<Address> address = new HashSet<Address>(0);
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
@@ -89,4 +91,6 @@ public class User extends IdEntity<User>{
 	public void setOrders(Set<Order> orders) {
 		this.orders = orders;
 	}
+	
+	
 }

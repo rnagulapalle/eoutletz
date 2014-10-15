@@ -13,9 +13,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.eoutletz.persist.db.IdEntity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "Order")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Order extends IdEntity<Order> {
 
 	/**
@@ -69,4 +71,6 @@ public class Order extends IdEntity<Order> {
 	public void setPaymentType(PaymentType paymentType) {
 		this.paymentType = paymentType;
 	}
+	
+	
 }

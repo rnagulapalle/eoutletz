@@ -8,9 +8,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.eoutletz.persist.db.IdEntity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="Partner_Contact")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PartnerContact extends IdEntity<PartnerContact>{
 
 	/**
@@ -96,4 +98,6 @@ public class PartnerContact extends IdEntity<PartnerContact>{
 	public void setAddressType(AddressType addressType) {
 		this.addressType = addressType;
 	}
+	
+	
 }

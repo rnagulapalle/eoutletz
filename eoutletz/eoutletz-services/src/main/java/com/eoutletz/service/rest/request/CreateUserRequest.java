@@ -1,4 +1,4 @@
-package com.eoutletz.common.rest.request;
+package com.eoutletz.service.rest.request;
 
 import java.io.Serializable;
 

@@ -1,5 +1,6 @@
-package com.eoutletz.common.rest.response;
+package com.eoutletz.service.rest.response;
 
+import com.eoutletz.persist.entity.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -10,6 +11,7 @@ public class UserResponse {
 	@JsonIgnoreProperties(ignoreUnknown = true)
 	public static class Data{
 		private BaseResponseResource response;
+		
 		private String firstname;
 		private String lastname;
 		private String email;
@@ -32,6 +34,7 @@ public class UserResponse {
 		public void setEmail(String email) {
 			this.email = email;
 		}
+		
 		public BaseResponseResource getResponse() {
 			return response;
 		}

@@ -16,6 +16,20 @@
 	 
     <jee:jndi-lookup id="dataSource" jndi-name="${eoutz.jndi.name}"/>
     
+    <!-- <bean id="eEmf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+      <property name="dataSource" ref="dataSource" />
+      <property name="packagesToScan" value="com.eoutletz.persist" />
+      <property name="jpaVendorAdapter">
+         <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+      </property>
+      <property name="jpaProperties">
+         <props>
+            <prop key="hibernate.hbm2ddl.auto">validate</prop>
+            <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+         </props>
+      </property>
+   </bean> -->
+    
     <jdbc:initialize-database data-source="dataSource">
         <jdbc:script location="classpath:db/initSchema-eOutletz.sql"/>
     </jdbc:initialize-database>
@@ -35,6 +49,9 @@
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+    <!-- <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+      <property name="entityManagerFactory" ref="eEmf" />
+   </bean> -->
     
     <tx:annotation-driven transaction-manager="transactionManager"/>
     
