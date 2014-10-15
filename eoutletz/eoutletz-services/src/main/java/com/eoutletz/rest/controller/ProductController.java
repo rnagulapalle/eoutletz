@@ -18,6 +18,7 @@ import com.eoutletz.common.constants.Constants.ProductType;
 import com.eoutletz.common.log.Logger;
 import com.eoutletz.persist.entity.Image;
 import com.eoutletz.persist.entity.Product;
+import com.eoutletz.rest.exceptions.InvalidArgumentException;
 import com.eoutletz.rest.exceptions.NoSuchResourceFoundException;
 import com.eoutletz.service.ProductService;
 import com.eoutletz.service.rest.response.BaseResponseResource;
@@ -35,12 +36,14 @@ public class ProductController extends BaseController{
 	private ProductService productService;
 	
 	@RequestMapping(value = "/products/{type}/{limit}/", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ProductResponse> getUser(@PathVariable("type")  int type, @PathVariable("limit")  int limit) {
+	public ResponseEntity<ProductResponse> getProducts(@PathVariable("type")  int type, @PathVariable("limit")  int limit) {
 		
 		logger.info("....get product has been called..");
 		//check type and limit values
 		
-		ProductType productType = ProductType.values()[type];
+		ProductType productType = ProductType.get(type);
+		if(productType == null) throw new InvalidArgumentException("Invalid type found " + type);
+		
 		List<Product> products = null;
 		
 		switch(productType){
